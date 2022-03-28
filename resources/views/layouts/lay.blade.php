@@ -214,6 +214,24 @@
               </ul>
             </div>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements1" aria-expanded="false" aria-controls="form-elements">
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">Testimoni Alumni</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="form-elements1">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="/formAlumni">Form Testimoni</a></li>
+              </ul>
+            </div>
+            <div class="collapse" id="form-elements1">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="/listTestii">List Testimoni</a></li>
+              </ul>
+            </div>
+          </li>
          
         </ul>
       </nav>

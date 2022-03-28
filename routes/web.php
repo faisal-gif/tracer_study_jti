@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TestimoniController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,4 +35,3 @@ Route::POST('/updateAlum', 'HomeController@updateAl')->name('upKat');
 Route::post('/inpKabar', 'HomeController@inpKabar')->name('inpKabar');
 Route::get('/showKabar/{id}', 'HomeController@showKabar');
 Route::get('/filterKab', 'HomeController@filterKab');
-
