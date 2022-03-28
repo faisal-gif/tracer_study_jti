@@ -38,3 +38,16 @@ Route::POST('/updateAlum', 'HomeController@updateAl')->name('upKat');
 Route::post('/inpKabar', 'HomeController@inpKabar')->name('inpKabar');
 Route::get('/showKabar/{id}', 'HomeController@showKabar');
 Route::get('/filterKab', 'HomeController@filterKab');
+
+Route::post('/ktAlumni', 'TestimoniController@ktAlumni')->name('ktAlumni');
+Route::get('/formAlumni', function () {
+    return view('testimoni');
+});
+Route::get('/testimoni', 'TestimoniController@index');
+Route::get('/listTestii','TestimoniController@show');
+Route::post('/listTestii/delete/{id_testimoni}', 'TestimoniController@destroy');
+Route::post('/listTestii/update/{id_testimoni}','TestimoniController@update');
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/pesan','TestimoniController@sukses');
