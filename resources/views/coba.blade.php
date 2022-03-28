@@ -1,99 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Login</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{{asset('login/images/icons/favicon.ico')}}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('login/vendor/bootstrap/css/bootstrap.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('login/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('login/vendor/animate/animate.css')}}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{{asset('login/vendor/css-hamburgers/hamburgers.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('login/vendor/animsition/css/animsition.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('login/vendor/select2/select2.min.css')}}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{{asset('login/vendor/daterangepicker/daterangepicker.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('login/css/util.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('login/css/main.css')}}">
-<!--===============================================================================================-->
-</head>
-<body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-form-title" style="background-image: url(images/polinema2.jpg);">
-					<span class="login100-form-title-1">
-						Sign In
-					</span>
-				</div>
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+                     
+                      <tbody>
+                      @foreach($alum as $a)
+                        <tr>
+                        <td>
+                        {{$a->nim}}
+                          </td>
+                          <td>
+                          {{$a->nama}}
+                          </td>
+                          <td>
+                          {{$a->prodi}}
+                          </td>
+                          <td>
+                          {{$a->tahunLulus}}
+                          </td>
+                          <td>
+                          <a class="nav-link btn btn-info btn-sm" data-toggle="collapse" href="#coba{{$a->nim}}" aria-expanded="false" aria-controls="form-elements">
+                            Detail
+                          </a>
+                          </td>
+                          <td>
+                          <a class="btn btn-success btn-sm" href="/editAlum/{{$a->nim}}">
+                           <i class="ti-pencil"></i>
+                          </a>
+                          |
+                          <a class="btn btn-danger btn-sm" href="/deleteAlum/{{$a->nim}}">
+                           <i class="ti-trash"></i>
+                          </a>
+                          </td>
+                          
+                          
+                        </tr>
+                        
+                        <tr class="collapse" id="coba{{$a->nim}}">
+                        
+                          <td colspan=2>
+                          <h6>Data diri</h6>
+                          <br>  
+                          No Handphone : {{$a->noHp}}
+                            <br>
+                            <br>
+                          Kota Lahir : {{$a->kotaLahir}}
+                          <br>
+                          <br>
+                          Tangal Lahir : {{$a->tanggalLahir}}
+                          <br>
+                          <br>
+                          Jenis Kelamin : {{$a->jk}}
+                          <br>
+                          <br>
+                          Email : {{$a->email}}
+                          <br>
+                          <br>
+                          <h6>Domisili</h6>
+                          <br>
+                          Provinsi : {{$a->provinsi}}
+                          <br>
+                          <br>
+                          Kota : {{$a->kota}}
+                          <br>
+                          <br>
+                          Alamat : {{$a->alamat}}
+                          <br>
+                          <br>
+                          Kode Pos : {{$a->kodePos}}
+                         
+                          </td>
+                          <td colspan=4>
+                          <h6>Pekerjaan</h6>
+                          <br>  
+                          Nama Pekerajaan : {{$a->pekerjaan}}
+                          <br>
+                          <br>
+                          Jenis Pekerajaan : {{$a->jp}}
+                          <br>
+                          <br>
+                          Nama Perusahaan : {{$a->namaPerusahaan}}
+                          <br>
+                          <br>
+                          Alamat Perusahaan : {{$a->alamatPerusahaan}}
+                          </td>
+                        </tr>
+                        
+               @endforeach
+                      </tbody>
+                    </table>
+					
 
-				<form class="login100-form validate-form" action="{{ route('login') }}">
-                @csrf
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" placeholder="Enter username" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
-						<span class="label-input100">Password</span>
-						<input class="input100" type="password" placeholder="Enter password" name="password" required autocomplete="current-password">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="flex-sb-m w-full p-b-30">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox"  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
-
-						<div>
-							<a href="#" class="txt1">
-								Forgot Password?
-							</a>
-						</div>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn">
-							Login
-						</button>
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-<!--===============================================================================================-->
-	<script src="{{asset('login/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('login/vendor/animsition/js/animsition.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('login/vendor/bootstrap/js/popper.js')}}"></script>
-	<script src="{{asset('login/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('login/vendor/select2/select2.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('login/vendor/daterangepicker/moment.min.js')}}"></script>
-	<script src="{{asset('login/vendor/daterangepicker/daterangepicker.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('login/vendor/countdowntime/countdowntime.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{asset('login/js/main.js')}}"></script>
-
-</body>
-</html>
+					@foreach($alum as $b)
+                        <tr class="collapse" id="coba{{$b->nim}}">
+                        
+                          <td colspan=2>
+                          <h6>Data diri</h6>
+                          <br>  
+                          No Handphone : {{$b->noHp}}
+                            <br>
+                            <br>
+                          Kota Lahir : {{$b->kotaLahir}}
+                          <br>
+                          <br>
+                          Tangal Lahir : {{$b->tanggalLahir}}
+                          <br>
+                          <br>
+                          Jenis Kelamin : {{$b->jk}}
+                          <br>
+                          <br>
+                          Email : {{$b->email}}
+                          <br>
+                          <br>
+                          <h6>Domisili</h6>
+                          <br>
+                          Provinsi : {{$b->provinsi}}
+                          <br>
+                          <br>
+                          Kota : {{$b->kota}}
+                          <br>
+                          <br>
+                          Alamat : {{$b->alamat}}
+                          <br>
+                          <br>
+                          Kode Pos : {{$b->kodePos}}
+                         
+                          </td>
+                          <td colspan=4>
+                          <h6>Pekerjaan</h6>
+                          <br>  
+                          Nama Pekerajaan : {{$b->pekerjaan}}
+                          <br>
+                          <br>
+                          Jenis Pekerajaan : {{$b->jp}}
+                          <br>
+                          <br>
+                          Nama Perusahaan : {{$b->namaPerusahaan}}
+                          <br>
+                          <br>
+                          Alamat Perusahaan : {{$b->alamatPerusahaan}}
+                          </td>
+                        </tr>
+                        @endforeach
+             
