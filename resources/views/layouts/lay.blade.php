@@ -11,13 +11,14 @@
   <link rel="stylesheet" href="{{asset('ad/vendors/ti-icons/css/themify-icons.css')}}">
   <link rel="stylesheet" href="{{asset('ad/vendors/css/vendor.bundle.base.css')}}">
   <!-- endinject -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="{{asset('ad/vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
   <link rel="stylesheet" href="{{asset('ad/vendors/ti-icons/css/themify-icons.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('ad/js/select.dataTables.min.css')}}">
-  <!-- End plugin css for this page -->
+  
   <!-- inject:css -->
   <link rel="stylesheet" href="{{asset('ad/css/vertical-layout-light/style.css')}}">
+
   <!-- endinject -->
   <link rel="shortcut icon" href="{{asset('ad/images/favicon.png')}}" />
 </head>
@@ -190,6 +191,27 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/formBiodata">Form Biodata</a></li>
               </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="/showBiodata">All Biodata</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements1" aria-expanded="false" aria-controls="form-elements">
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">Kabar Berita</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="form-elements1">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="/formKabar">Kabar</a></li>
+              </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Kabarmu</a></li>
+              </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="/filterKab">Persetujuan Kabar</a></li>
+              </ul>
             </div>
           </li>
          
@@ -226,9 +248,6 @@
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="{{asset('ad/vendors/chart.js/Chart.min.js')}}"></script>
-  <script src="{{asset('ad/vendors/datatables.net/jquery.dataTables.js')}}"></script>
-  <script src="{{asset('ad/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
-  <script src="{{asset('ad/js/dataTables.select.min.js')}}"></script>
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->
@@ -237,10 +256,29 @@
   <script src="{{asset('ad/js/template.js')}}"></script>
   <script src="{{asset('ad/js/settings.js')}}"></script>
   <script src="{{asset('ad/js/todolist.js')}}"></script>
+  <script src="{{asset('tab/tableJs.js')}}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="{{asset('ad/js/dashboard.js')}}"></script>
   <script src="{{asset('ad/js/Chart.roundedBarCharts.js')}}"></script>
+  <script>
+$(document).ready(function() {
+  $('#example').DataTable( {
+    destroy: true,
+    paging: false
+
+} );
+} );
+</script>
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+
   <!-- End custom js for this page-->
 </body>
 

@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@welcome');
 
 Auth::routes();
 
@@ -23,6 +20,17 @@ Route::post('/proAlumni', 'HomeController@proAlumni')->name('proAlumni');
 Route::get('/formBiodata', function () {
     return view('alumni');
 });
-
-
+Route::get('/formKabar', function () {
+    return view('kabarJurusan');
+});
+Route::get('/showProfile', function () {
+    return view('showProfile');
+});
+Route::get('/showBiodata', 'HomeController@showAlumni');
+Route::get('/deleteAlum/{nim}', 'HomeController@delAl')->name('delAl');
+Route::get('/editAlum/{nim}', 'HomeController@editAl')->name('editlAl');
+Route::POST('/updateAlum', 'HomeController@updateAl')->name('upKat');
+Route::post('/inpKabar', 'HomeController@inpKabar')->name('inpKabar');
+Route::get('/showKabar/{id}', 'HomeController@showKabar');
+Route::get('/filterKab', 'HomeController@filterKab');
 
