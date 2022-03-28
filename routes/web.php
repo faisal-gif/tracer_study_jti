@@ -25,15 +25,3 @@ Route::post('/proAlumni', 'HomeController@proAlumni')->name('proAlumni');
 Route::get('/formBiodata', function () {
     return view('alumni');
 });
-Route::post('/ktAlumni', 'TestimoniController@ktAlumni')->name('ktAlumni');
-Route::get('/formAlumni', function () {
-    return view('testimoni');
-});
-Route::get('/testimoni', 'TestimoniController@index');
-Route::get('/listTestii','TestimoniController@show');
-Route::post('/listTestii/delete/{id_testimoni}', 'TestimoniController@destroy');
-Route::post('/listTestii/update/{id_testimoni}','TestimoniController@update');
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/pesan','TestimoniController@sukses');
