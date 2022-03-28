@@ -13,10 +13,7 @@ use App\Http\Controllers\TestimoniController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@welcome');
 
 Auth::routes();
 

@@ -15,17 +15,24 @@ class CreateBiodatasTable extends Migration
     {
         Schema::create('biodatas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('nim');
             $table->string('nama');
-            $table->integer('noHp');
+            $table->string('noHp','13');
             $table->string('kotaLahir');
             $table->string('jk');
             $table->date('tanggalLahir');
             $table->string('prodi');
             $table->string('tahunLulus');
             $table->text('alamat');
-            $table->integer('kodePos');
+            $table->string('kodePos','11');
             $table->string('provinsi');
             $table->string('kota');
+            $table->string('email');
+            $table->string('pekerjaan');
+            $table->string('jp');
+            $table->string('namaPerusahaan');
+            $table->string('alamatPerusahaan');
+
             $table->timestamps();
         });
     }
