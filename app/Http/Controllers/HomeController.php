@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\biodata;
 use App\kabarJurusan;
+use App\testimoni;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -30,8 +31,9 @@ class HomeController extends Controller
     }
     public function welcome()
     {
+        $testimonis = testimoni::select('*')->get();
         $kabar= kabarJurusan::orderBy('id', 'DESC')->take(3)->get();
-        return view('welcome',['kabar'=>$kabar]);
+        return view('welcome', compact('kabar', 'testimonis'));
     }
     public function showAlumni()
     {

@@ -176,14 +176,14 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/adminDash">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="icon-columns menu-icon"></i>
+              <i class="icon-head menu-icon"></i>
               <span class="menu-title">Biodata Alumni</span>
               <i class="menu-arrow"></i>
             </a>
@@ -198,7 +198,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements1" aria-expanded="false" aria-controls="form-elements">
-              <i class="icon-columns menu-icon"></i>
+              <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Kabar Berita</span>
               <i class="menu-arrow"></i>
             </a>
@@ -216,17 +216,15 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements1" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements2" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Testimoni Alumni</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="form-elements1">
+            <div class="collapse" id="form-elements2">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/formAlumni">Form Testimoni</a></li>
               </ul>
-            </div>
-            <div class="collapse" id="form-elements1">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/listTestii">List Testimoni</a></li>
               </ul>
@@ -276,6 +274,11 @@
   <script src="{{asset('ad/js/todolist.js')}}"></script>
   <script src="{{asset('tab/tableJs.js')}}"></script>
   <!-- endinject -->
+
+ <!-- Custom js for this page-->
+ <script src="{{asset('ad/js/chart.js')}}"></script>
+  <!-- End custom js for this page-->
+
   <!-- Custom js for this page-->
   <script src="{{asset('ad/js/dashboard.js')}}"></script>
   <script src="{{asset('ad/js/Chart.roundedBarCharts.js')}}"></script>

@@ -262,116 +262,26 @@
       <div class="row ftco-animate">
         <div class="col-md-12">
           <div class="carousel-testimony owl-carousel">
+          @foreach ($testimonis as $testimonis)
             <div class="item">
+            
               <div class="testimony-wrap py-4">
+              
                 <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                    <div class="pl-3">
-                      <p class="name">Roger Scott</p>
-                      <span class="position">Marketing Manager</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap py-4">
-                <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
+                <p>{{ Str::limit($testimonis->testimoni, 50) }}</p>
                   <div class="d-flex align-items-center">
                     <div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
                     <div class="pl-3">
-                      <p class="name">Roger Scott</p>
+                      <p class="name">nama</p>
                       <span class="position">Marketing Manager</span>
                     </div>
                   </div>
                 </div>
+               
               </div>
+              
             </div>
-            <div class="item">
-              <div class="testimony-wrap py-4">
-                <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
-                    <div class="pl-3">
-                      <p class="name">Roger Scott</p>
-                      <span class="position">Marketing Manager</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap py-4">
-                <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                    <div class="pl-3">
-                      <p class="name">Roger Scott</p>
-                      <span class="position">Marketing Manager</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap py-4">
-                <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                    <div class="pl-3">
-                      <p class="name">Roger Scott</p>
-                      <span class="position">Marketing Manager</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>

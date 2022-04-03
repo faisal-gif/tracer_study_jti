@@ -48,3 +48,7 @@ Route::get('/about', function () {
     return view('about');
 });
 Route::get('/pesan','TestimoniController@sukses');
+
+Route::get('/adminDash', function () {
+    return view('adminDash');
+});
