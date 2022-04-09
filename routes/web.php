@@ -35,10 +35,7 @@ Route::POST('/updateAlum', 'HomeController@updateAl')->name('upKat');
 Route::post('/inpKabar', 'HomeController@inpKabar')->name('inpKabar');
 Route::get('/showKabar/{id}', 'HomeController@showKabar');
 Route::get('/filterKab', 'HomeController@filterKab');
-Route::get('/formPertanyaan', 'HomeController@formPertanyaan');
-Route::post('/prosesBuat', 'HomeController@prosesBuat');
-Route::get('/pertanyaan', 'HomeController@pertanyaan');
-Route::post('/jawaban', 'HomeController@prosesIsi');
+
 Route::post('/ktAlumni', 'TestimoniController@ktAlumni')->name('ktAlumni');
 Route::get('/formAlumni', function () {
     return view('testimoni');
