@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\biodata;
 use App\kabarJurusan;
+use App\pertanyaan;
+use App\jawaban;
 use Illuminate\Support\Facades\DB;
+use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\Field;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class HomeController extends Controller
 {
+    use FormBuilderTrait;
     /**
      * Create a new controller instance.
      *
@@ -132,6 +138,81 @@ public function filterKab()
     $kabar= kabarJurusan::all();
      return view('showKab',['kabar'=>$kabar]);
 }
+
+public function formPertanyaan()
+    {
+        return view('formPertanyaan');
+    }
+  
+    public function pertanyaan(FormBuilder $formBuilder)
+    {
+        $coba=pertanyaan::all()->toArray();
+        $sbmt=[
+            $submit=
+            ['name' => 'submit',
+            'type' => 'submit',
+            
+        ],         
+        ];
+        $ad=array_merge($coba,$sbmt);
+        $form = $formBuilder->createByArray($ad,[ 
+        'method' => 'POST',
+        'url' => '/jawaban']);
+
+        return view('hasilForm', compact('form'));
+    }
+
+    public function prosesBuat(Request $request)
+    {
+        
+        $add=new pertanyaan();
+        $nama= str_replace(' ', '', $request->input('nama'));
+        $add->name = $nama;
+        $add->type = $request->input('type');
+        $add->label = $request->input('nama');
+        $add->type = $request->input('type');
+        if ($request->input('type') == "choice") {
+            $object;
+        $request->validate([
+            'isi.*' => 'required',
+            
+        ]);
+
+        foreach ($request->isi as $key => $value) {
+            
+            $object[$value]=$value;
+           
+
+        }
+            $add->choices = (object) $object;
+            $add->choice_options = [
+                'wrapper' => ['class' => 'choice-wrapper'],
+                'label_attr' => ['class' => 'label-class'],
+            ];
+            $add->expanded = true;
+            $add->save();
+        }
+
+        $add->save();
+        
+        
+
+        return redirect('/formPertanyaan');;
+      
+    }
+    public function prosesIsi(Request $request,FormBuilder $formBuilder)
+    {
+        $coba=pertanyaan::all()->toArray();
+        $form = $formBuilder->createByArray($coba);
+        $add=new jawaban([
+            'jawaban' => $form->getFieldValues()
+            
+        ]);
+        $add->save();
+
+        return redirect('/pertanyaan');
+      
+    }
 }
 
 

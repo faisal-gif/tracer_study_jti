@@ -15,6 +15,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="{{asset('ad/vendors/ti-icons/css/themify-icons.css')}}">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />    
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   
   <!-- inject:css -->
   <link rel="stylesheet" href="{{asset('ad/css/vertical-layout-light/style.css')}}">
