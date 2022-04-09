@@ -48,9 +48,3 @@ Route::get('/about', function () {
     return view('about');
 });
 Route::get('/pesan','TestimoniController@sukses');
-
-
-Route::get('/formPertanyaan', 'HomeController@formPertanyaan');
-Route::post('/prosesBuat', 'HomeController@prosesBuat');
-Route::get('/pertanyaan', 'HomeController@pertanyaan');
-Route::post('/jawaban', 'HomeController@prosesIsi');
