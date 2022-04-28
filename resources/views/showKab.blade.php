@@ -5,7 +5,8 @@
                 <div class="card-body">
                   <h4 class="card-title">Kabar Berita</h4>
                   <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
+                    <!-- <table class="table table-bordered"> -->
+                      <table class="table table-bordered">
                       <thead>
                         <tr>
                           <th>

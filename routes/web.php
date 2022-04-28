@@ -19,9 +19,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/proAlumni', 'HomeController@proAlumni')->name('proAlumni');
+Route::post('/alumni', 'HomeController@alumni')->name('alumni');
 Route::get('/formBiodata', function () {
     return view('alumni');
 });
+
+Route::get('/formDataAlumni', function () {
+    return view('formDataAlumni');
+});
+
 Route::get('/formKabar', function () {
     return view('kabarJurusan');
 });
@@ -29,6 +35,7 @@ Route::get('/showProfile', function () {
     return view('showProfile');
 });
 Route::get('/showBiodata', 'HomeController@showAlumni');
+Route::get('/dataAlumni', 'HomeController@showData');
 Route::get('/deleteAlum/{nim}', 'HomeController@delAl')->name('delAl');
 Route::get('/editAlum/{nim}', 'HomeController@editAl')->name('editlAl');
 Route::POST('/updateAlum', 'HomeController@updateAl')->name('upKat');
@@ -52,3 +59,4 @@ Route::get('/pesan','TestimoniController@sukses');
 Route::get('/adminDash', function () {
     return view('adminDash');
 });
+

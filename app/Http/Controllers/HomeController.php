@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\biodata;
+use App\dataAlumni;
 use App\kabarJurusan;
 use App\testimoni;
 use Illuminate\Support\Facades\DB;
@@ -40,16 +41,22 @@ class HomeController extends Controller
         $alum= biodata::all();
         return view('showAlum',['alum'=>$alum]);
     }
+
+    public function showData()
+    {
+        $dataAlum= dataAlumni::all();
+        return view('dataAlumni',['dataAlum'=>$dataAlum]);
+    }
+
     public function editAlumni()
     {
         $alum= biodata::all();
         return view('showAlum',['alum'=>$alum]);
     }
-    public function proAlumni(Request $request)
-{
-  
-  
-  $add=new biodata([
+
+    public function proAlumni(Request $request){
+
+      $add=new biodata([
       'nim' =>$request->input('nim'),
       'nama' => $request->input('nama'),
       'noHp' => $request->input('noHp'),
@@ -67,16 +74,26 @@ class HomeController extends Controller
       'jp' => $request->input('jp'),
       'namaPerusahaan' => $request->input('namaPerusahaan'),
       'alamatPerusahaan' => $request->input('alamatPerusahaan')
-      
-            
-      
-      
-
   ]);
   $add->save();
   
   return redirect('/formBiodata');
 }
+
+public function alumni(Request $request)
+{
+  $add=new dataAlumni([
+      'nim' =>$request->input('nim'),
+      'nama' => $request->input('nama'),
+      'prodi' => $request->input('prodi'),
+      'tahunLulus' => $request->input('tahunLulus'),
+      'jk' => $request->input('jk'),
+  ]);
+  $add->save();
+  
+  return redirect('/formDataAlumni');
+}
+
 public function delAl($nim)
 {
     $bio= DB::table('biodatas')->where('nim', $nim)->delete();
@@ -108,20 +125,15 @@ public function updateAl(Request $request)
         
         return redirect('/showBiodata');
     }
-    public function inpKabar(Request $request)
-{
-  
-  
-  $add=new kabarJurusan([
+    public function inpKabar(Request $request){
+    $add=new kabarJurusan([
       'idUser' =>$request->input('idUser'),
       'judul' => $request->input('judul'),
       'tag' => $request->input('tag'),
       'kabar' => $request->input('isi')
-      
-
   ]);
   $add->save();
-  
+
   return redirect('/formKabar');
 }
 public function showKabar($id)
@@ -134,6 +146,14 @@ public function filterKab()
     $kabar= kabarJurusan::all();
      return view('showKab',['kabar'=>$kabar]);
 }
+
+public function delete(Request $request)
+    {
+        $kabar = testimoni::where('id', $request->id);
+        $kabar->delete();
+   
+        return redirect('/filterKab');
+    }
 }
 
 

@@ -194,6 +194,12 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/showBiodata">All Biodata</a></li>
               </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="/formDataAlumni">Form Data Alumni</a></li>
+              </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="/dataAlumni">Data Alumni</a></li>
+              </ul>
             </div>
           </li>
           <li class="nav-item">
@@ -206,9 +212,9 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/formKabar">Kabar</a></li>
               </ul>
-              <ul class="nav flex-column sub-menu">
+              <!-- <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="#">Kabarmu</a></li>
-              </ul>
+              </ul> -->
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/filterKab">Persetujuan Kabar</a></li>
               </ul>

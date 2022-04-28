@@ -66,6 +66,10 @@ class TestimoniController extends Controller
 		Session::flash('sukses', 'Pesan Anda berhasil di tampilkan pada dashboard');
 		return redirect('/formAlumni');
 	}
+
+    public function readmore(Request $request){
+        return view('readmore', compact('request'));
+    }
 }
 
 ?>

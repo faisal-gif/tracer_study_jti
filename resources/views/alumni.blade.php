@@ -151,7 +151,7 @@
                       
                     </div>
                     <p class="card-description">
-                    Pekerajaan
+                    Pekerjaan
                     </p>
                     <div class="row">
                       <div class="col-md-6">
