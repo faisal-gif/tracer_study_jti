@@ -3,8 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use App\testimoni;
 
-class biodata extends Model
+class biodata extends Eloquent
 {
-    public $fillable= ['nim','nama','noHp','kotaLahir','jk','tanggalLahir','prodi','tahunLulus','alamat','kodePos','provinsi','kota','email','pekerjaan','jp','namaPerusahaan','alamatPerusahaan'];
+    protected $connection = 'mongodb';
+	protected $collection = 'biodata';
+    protected $guarded = [];
+    protected function testimoni()
+    {
+        return $this->hasMany('App\testimoni','nim','idUser');
+}
 }

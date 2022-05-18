@@ -3,8 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class kabarJurusan extends Model
+class kabarJurusan extends Eloquent
 {
-    public $fillable= ['idUser','judul','tag','kabar'];
+    protected $connection = 'mongodb';
+	protected $collection = 'kabarJurusan';
+    protected $guarded = [];
 }

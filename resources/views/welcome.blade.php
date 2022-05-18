@@ -39,7 +39,7 @@
           <li class="nav-item"><a href="/about" class="nav-link">Tentang Kami</a></li>
           <!-- <li class="nav-item"><a href="course.html" class="nav-link">Alumni</a></li> -->
           <li class="nav-item"><a href="/testimoni" class="nav-link">Alumni</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Artikel</a></li>
+          <li class="nav-item"><a href="/kabarr" class="nav-link">Artikel</a></li>
           <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
         </ul>
       </div>
@@ -69,18 +69,18 @@
         <div class="col-md-5 order-md-last">
           <div class="login-wrap p-4 p-md-5">
             <h3 class="mb-4">Register Now</h3>
-            <form action="#" class="signup-form">
+            <form action="/registerUser" class="signup-form">
               <div class="form-group">
                 <label class="label" for="name">NIM</label>
-                <input type="number" class="form-control" placeholder="John Doe">
+                <input type="text" name="nim" class="form-control" placeholder="NIM">
               </div>
               <div class="form-group">
                 <label class="label" for="email">Username</label>
-                <input type="text" class="form-control" placeholder="johndoe@gmail.com">
+                <input type="text" name="username" class="form-control" placeholder="johndoe@gmail.com">
               </div>
               <div class="form-group">
                 <label class="label" for="password">Password</label>
-                <input id="password-field" type="password" class="form-control" placeholder="Password">
+                <input id="password-field" name="password" type="password" class="form-control" placeholder="Password">
               </div>
               <div class="form-group">
                 <label class="label" for="password">Confirm Password</label>
@@ -183,17 +183,17 @@
       @foreach($kabar as $kab)
         <div class="col-lg-4 ftco-animate">
           <div class="blog-entry">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/polinema5.jpg');">
+            <a href="/showKabar/{{$kab->id}}" class="block-20" style="background-image: url({{asset($kab->img)}});">
             </a>
             <div class="text d-block">
               <div class="meta">
                 <p>
                   <a href="#"><span class="fa fa-calendar mr-2"></span>{{$kab->created_at->format('d, M Y')}}</a>
-                  <a href="#"><span class="fa fa-user mr-2"></span>Admin</a>
-                  <a href="#" class="meta-chat"><span class="fa fa-comment mr-2"></span> 3</a>
+                  <a href="/showProfile/{{$kab->idUser}}"><span class="fa fa-user mr-2"></span>{{$kab->nama}}</a>
+                 
                 </p>
               </div>
-              <h3 class="heading"><a href="#">{{ Str::limit($kab->judul, 30),$end='......' }}</a></h3>
+              <h3 class="heading"><a href="/showKabar/{{$kab->id}}">{{ Str::limit($kab->judul, 30),$end='......' }}</a></h3>
               <p> {{ Str::limit($kab->kabar, 20),$end='...' }}</p>
               <p><a href="/showKabar/{{$kab->id}}" class="btn btn-secondary py-2 px-3">Read more</a></p>
             </div>
@@ -262,116 +262,26 @@
       <div class="row ftco-animate">
         <div class="col-md-12">
           <div class="carousel-testimony owl-carousel">
+          @foreach ($testimonis as $testimonis)
             <div class="item">
+            
               <div class="testimony-wrap py-4">
+              
                 <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
+                <p>{{ Str::limit($testimonis->testimoni, 50) }}</p>
                   <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+                    <div class="user-img" style="background-image: url({{$testimonis->biodata->foto}})"></div>
                     <div class="pl-3">
-                      <p class="name">Roger Scott</p>
-                      <span class="position">Marketing Manager</span>
+                      <p class="name">{{$testimonis->biodata->nama}}</p>
+                      <span class="position">{{$testimonis->biodata->prodi}}</span>
                     </div>
                   </div>
                 </div>
+               
               </div>
+              
             </div>
-            <div class="item">
-              <div class="testimony-wrap py-4">
-                <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                    <div class="pl-3">
-                      <p class="name">Roger Scott</p>
-                      <span class="position">Marketing Manager</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap py-4">
-                <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
-                    <div class="pl-3">
-                      <p class="name">Roger Scott</p>
-                      <span class="position">Marketing Manager</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap py-4">
-                <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                    <div class="pl-3">
-                      <p class="name">Roger Scott</p>
-                      <span class="position">Marketing Manager</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap py-4">
-                <div class="text">
-                  <p class="star">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                    <div class="pl-3">
-                      <p class="name">Roger Scott</p>
-                      <span class="position">Marketing Manager</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>

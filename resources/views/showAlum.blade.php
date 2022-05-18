@@ -4,17 +4,19 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Biodata Alumni</h4>
+                  <a class="btn btn-primary btn-sm" href="/formBiodata"> Tambah </a>
+                  <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#importModal">Import Excel</button>
                   
             
                   <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Prodi</th>
+                <th>Tahun Lulus</th>
+                <th>Details</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -68,6 +70,10 @@
         </button>
       </div>
       <div class="modal-body">
+        <label><h6> Foto </h6></label>
+        <br>
+      <img id="blah" src="{{asset($b->foto)}}" alt="your image"  width="250" />
+
       <table>
         <thead>
         <th>Data Diri</th>
@@ -139,4 +145,39 @@
                 </div>
               </div>
             </div>
+              <!-- Modal -->
+              <div class="modal fade bd-example-modal-lg" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Import Biodata Alumni</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                 <form class="form-sample" method="POST" action="/importBio" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                      <div class="col-md-6">
+                        
+                        <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Import Biodata</label>
+                       <div class="col-sm-9">
+                         <input type="file" name="importBiodata" id="" class="form-control">
+                      
+                          </div>
+                        </div>
+                      </div>
+                    
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" name="save" id="save" class="btn btn-primary" value="Import" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+      </div>
+    </div>
+  </div>
+</div>
+</form>
             @endsection

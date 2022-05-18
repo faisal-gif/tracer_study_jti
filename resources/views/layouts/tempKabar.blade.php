@@ -44,7 +44,7 @@
  </nav>
  <!-- END nav -->
  
- <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');">
+ <section class="hero-wrap hero-wrap-2" style="background-image: url({{asset('images/bg_2.jpg')}});">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-end justify-content-center">

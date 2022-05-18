@@ -2,14 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-class jawaban extends Eloquent
+use Jenssegers\Mongodb\Eloquent\Model ;
+class jawaban extends Model
 {
     protected $connection = 'mongodb';
 	protected $collection = 'jawaban';
+    protected $guarded = [];
 
-    protected $fillable = [
-        'jawaban'
-    ];
 }

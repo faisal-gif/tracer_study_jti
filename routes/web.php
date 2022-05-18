@@ -18,27 +18,56 @@ Route::get('/', 'HomeController@welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/proAlumni', 'HomeController@proAlumni')->name('proAlumni');
+//alumni
+Route::post('/proAlumni', 'alumniController@proAlumni')->name('proAlumni');
 Route::get('/formBiodata', function () {
     return view('alumni');
 });
+Route::get('/showBiodata', 'alumniController@showAlumni');
+Route::get('/deleteAlum/{nim}', 'alumniController@delAl')->name('delAl');
+Route::get('/editAlum/{nim}', 'alumniController@editAl')->name('editlAl');
+Route::POST('/updateAlum', 'alumniController@updateAl')->name('upKat');
+Route::get('/editProfile/{nim}', 'alumniController@editProfile')->name('editlProfile');
+Route::get('/formDataAlumni', function () {
+    return view('formDataAlumni');
+});
+Route::post('/alumni', 'alumniController@alumni')->name('alumni');
+Route::get('/dataAlumni', 'alumniController@showData');
+Route::post('/importBio', 'alumniController@importBio');
+Route::post('/importAlumni', 'alumniController@importAlumni');
+
+//kabarJurusan
 Route::get('/formKabar', function () {
     return view('kabarJurusan');
 });
-Route::get('/showProfile', function () {
-    return view('showProfile');
-});
-Route::get('/showBiodata', 'HomeController@showAlumni');
-Route::get('/deleteAlum/{nim}', 'HomeController@delAl')->name('delAl');
-Route::get('/editAlum/{nim}', 'HomeController@editAl')->name('editlAl');
-Route::POST('/updateAlum', 'HomeController@updateAl')->name('upKat');
-Route::post('/inpKabar', 'HomeController@inpKabar')->name('inpKabar');
-Route::get('/showKabar/{id}', 'HomeController@showKabar');
-Route::get('/filterKab', 'HomeController@filterKab');
-Route::get('/formPertanyaan', 'HomeController@formPertanyaan');
-Route::post('/prosesBuat', 'HomeController@prosesBuat');
-Route::get('/pertanyaan', 'HomeController@pertanyaan');
-Route::post('/jawaban', 'HomeController@prosesIsi');
+Route::post('/inpKabar', 'kabarController@inpKabar')->name('inpKabar');
+Route::get('/showKabar/{id}', 'kabarController@showKabar');
+Route::get('/editKabar/{id}', 'kabarController@editKabar');
+Route::post('/prosesEdit/{id}', 'kabarController@prosesEdit');
+Route::get('/deleteKabar/{id}', 'kabarController@deleteKabar');
+Route::get('/filterKab', 'kabarController@filterKab');
+Route::get('/kabarKu/{idUser}','kabarController@kabarKu');
+Route::post('/persetujuanKabar/{id}', 'kabarController@statusKabar');
+Route::get('/kabarr', 'kabarController@kabarr');
+
+//pertanyaan
+Route::get('/buatForm', 'pertanyaanController@buatForm');
+Route::post('/prosesForm', 'pertanyaanController@prosesForm');
+Route::get('/listForm', 'pertanyaanController@listForm');
+Route::get('/showPertanyaan/{idForm}', 'pertanyaanController@listPertanyaan');
+Route::get('/formPertanyaan/{idForm}', 'pertanyaanController@formPertanyaan');
+Route::post('/prosesBuat', 'pertanyaanController@prosesBuat');
+Route::get('/pertanyaan/{idForm}', 'pertanyaanController@pertanyaan');
+Route::post('/copyPertanyaan/{idForm}', 'pertanyaanController@copyPertanyaan');
+Route::get('/deletePertanyaan/{id}', 'pertanyaanController@delPertanyaan');
+Route::get('/editPertanyaan/{id}', 'pertanyaanController@editPertanyaan');
+Route::post('/jawaban', 'pertanyaanController@prosesIsi');
+Route::get('/showJawaban/{idForm}', 'pertanyaanController@showJawaban');
+Route::get('/exportJawaban/{idForm}', 'pertanyaanController@export_excel');
+Route::get('/jawabanPdf/{idForm}', 'pertanyaanController@export_pdf');
+
+//profile
+Route::get('/showProfile/{nim}', 'HomeController@showProfile')->name('showProfile');
 
 Route::post('/ktAlumni', 'TestimoniController@ktAlumni')->name('ktAlumni');
 Route::get('/formAlumni', function () {
@@ -52,3 +81,13 @@ Route::get('/about', function () {
     return view('about');
 });
 Route::get('/pesan','TestimoniController@sukses');
+
+//user
+Route::get('/registerU', function () {
+    return view('auth.register');
+});
+Route::post('/registerUser','Auth\RegisterController@create');
+
+//email
+Route::get('/kirim-email','HomeController@email');
+Route::get('/kirim-wa','HomeController@whatsappNotification');

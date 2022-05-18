@@ -7,7 +7,6 @@ use App\testimoni;
 use Illuminate\Support\Facades\DB;
 use Session;
 
-
 class TestimoniController extends Controller
 {
     /**
@@ -17,7 +16,7 @@ class TestimoniController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
 
     /**
@@ -27,11 +26,12 @@ class TestimoniController extends Controller
      */
     public function index()
     {
-        $testimonis = testimoni::where('status',"ya")->get();
-        return view('testii',['testim'=> $testimonis]);
+        $testimonis = testimoni::where('status', "ya")->get();
+        return view('testii', ['testim'=> $testimonis]);
     }
 
-    public function ktAlumni(Request $request){
+    public function ktAlumni(Request $request)
+    {
         $tambah = new testimoni([
             'idUser' => $request->input('idUser'),
             'testimoni' => $request->input('testimoni')
@@ -41,10 +41,13 @@ class TestimoniController extends Controller
         return redirect('/formAlumni');
     }
 
-    public function show(){
-        $testimonis = testimoni::select('*')->get();
-        return view('listTesti', ['testim' => $testimonis]);
+    public function show()
+    {
+        $testimonis = testimoni::with('biodata')->get();
+        
+        return view('listTesti', compact('testimonis'));
     }
+    
 
     public function destroy(Request $request)
     {
@@ -53,19 +56,13 @@ class TestimoniController extends Controller
    
         return redirect('/listTestii');
     }
+    
 
     public function update(Request $request)
     {
-        $testimonis = testimoni::where('status' ,$request->status)->update(['status'=> 'ya']);
+        $testimonis = testimoni::where('status', $request->status)->update(['status'=> 'ya']);
 
         return redirect('/listTestii');
     }
 
-    public function sukses(Request $request){
-        $testimonis = testimoni::where('status' ,$request->status)->update(['status'=> 'ya']);
-		Session::flash('sukses', 'Pesan Anda berhasil di tampilkan pada dashboard');
-		return redirect('/formAlumni');
-	}
 }
-
-?>

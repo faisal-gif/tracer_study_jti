@@ -10,7 +10,29 @@
                     Data Diri
                     </p>
                     @foreach($bio as $b)
+                    
                     <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"></label>
+                          <div class="col-sm-9">
+                          <img id="blah" src="{{asset($b->foto)}}" alt="your image"  width="150" height="150"/>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Foto</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" name="foto" onchange="readURL(this);"/>
+                            <input type="hidden" name="x" value="{{$b->foto }}" /></td>
+                          </div>
+                        </div>
+                      </div>
+
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">NIM</label>
@@ -145,8 +167,48 @@
                         </div>
                       </div>
                     </div>
+                    <p class="card-description">
+                    Pekerajaan
+                    </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Pekerjaan</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="pekerjaan" value="{{$b->pekerjaan}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Jenis Pekerajaan</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="jp" value="{{$b->jp}}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Nama Perusahaan</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="namaPerusahaan" value="{{$b->namaPerusahaan}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Alamat Perusahaan</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="alamatPerusahaan" value="{{$b->alamatPerusahaan}}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     @endforeach
                     <button type="submit" class="btn btn-primary mb-2">Save</button>
+                    <a href="/showBiodata" class="btn btn-danger mb-2">close</a>
                   </form>
                 </div>
               </div>

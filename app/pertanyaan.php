@@ -9,8 +9,5 @@ class pertanyaan extends Eloquent
 {
     protected $connection = 'mongodb';
 	protected $collection = 'pertanyaan';
-
-    protected $fillable = [
-        'name','type','label','choices','choice_options','expanded'
-    ];
+    protected $guarded = [];
 }

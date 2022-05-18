@@ -11,6 +11,28 @@
                     Kabar Jurusan
                     </p>
                     <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"></label>
+                          <div class="col-sm-9">
+                          <img id="blah" src="https://www.freeiconspng.com/uploads/profile-icon-9.png" alt="your image"  width="780" height="200"/>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                      
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Foto</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" name="foto" onchange="readURL(this);"/>
+                          </div>
+                        </div>
+                      </div>
+                 
+                  </div>
+                    <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Judul</label>
@@ -49,5 +71,20 @@
                 </div>
               </div>
             </div>
+            
+<script>
+       function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
             
 @endsection

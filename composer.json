@@ -9,12 +9,19 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+        "barryvdh/laravel-dompdf": "^1.0",
+        "barryvdh/laravel-snappy": "^1.0",
         "fideloper/proxy": "^4.4",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "jenssegers/mongodb": "3.6",
         "kris/laravel-form-builder": "^1.50",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "1.0"
+        "laravel/ui": "1.0",
+        "maatwebsite/excel": "^3.1",
+        "mikehaertl/phpwkhtmltopdf": "^2.5",
+        "twilio/sdk": "^6.36"
     },
     "require-dev": {
         "facade/ignition": "^1.16.15",

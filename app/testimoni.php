@@ -4,11 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use App\biodata;
 
-
-class testimoni extends Model
+class testimoni extends Eloquent
 {
-    protected $primaryKey = 'idUser';
-    public $fillable= ['idUser','testimoni','id_testimoni', 'status'];
+    protected $connection = 'mongodb';
+	protected $collection = 'testimoni';
+    protected $guarded = [];
+  
+    public function biodata()
+    {
+        return $this->belongsTo(biodata::class,'idUser','nim');
+      
+    }
 }
 
