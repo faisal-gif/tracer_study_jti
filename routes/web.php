@@ -75,8 +75,9 @@ Route::get('/formAlumni', function () {
 });
 Route::get('/testimoni', 'TestimoniController@index');
 Route::get('/listTestii','TestimoniController@show');
-Route::post('/listTestii/delete/{id_testimoni}', 'TestimoniController@destroy');
+Route::get('/listTestii/delete/{id_testimoni}', 'TestimoniController@destroy');
 Route::post('/listTestii/update/{id_testimoni}','TestimoniController@update');
+Route::post('/listTestii/persetujuanTesti/{id_testimoni}', 'TestimoniController@statusTesti');
 Route::get('/about', function () {
     return view('about');
 });
