@@ -55,7 +55,7 @@ class alumniController extends Controller
     'name' => $request->input('nama'),
     'email' => $request->input('nim'),
     'password' => Hash::make($request->input('nim')),
-    'rule' => 'alumni'
+    'roles' => 'alumni'
 ]);
         $user->save();
 

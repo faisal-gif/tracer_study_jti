@@ -18,6 +18,7 @@ class kabarController extends Controller
     
         $filename = time().'.'.$file->getClientOriginalExtension();
         $path = $file->move('imgKab', $filename);
+        
       
         $add=new kabarJurusan([
           'idUser' =>$request->input('idUser'),

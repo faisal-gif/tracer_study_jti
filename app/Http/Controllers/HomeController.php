@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\kabarJurusan;
 use App\biodata;
 use App\testimoni;
+use App\kirimForm;
 use App\Mail\MyMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
@@ -51,10 +52,15 @@ class HomeController extends Controller
     }
     public function email(){
         $bio=  biodata::all();
+        $link=kirimForm::all()->first();
         foreach ($bio as $b ) {
             $details = [
-                'title' => 'Email dari POLINEMA',
-                'body' => 'This is for testing email using smtp',
+                'title' => 'Kepada Yth. Alumni JTI Polinema',
+                'body' => '
+                Mengingatkan untuk mengisi kuisioner tracer study pada tautan dibawah sistem.
+                Partisipasi anda akan sangat berharga bagi berkembangnya JTI Polinema.
+                Terima Kasih, Admin.',
+                'link' => $link->link,
                 'nama' => $b->nama
             ];
            

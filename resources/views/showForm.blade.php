@@ -35,6 +35,8 @@
                           <a class="btn btn-primary " href="/pertanyaan/{{$i->id}}">
                           Hasil Pertanyaan
                           </a>
+                          <input type="text" name="copy" id="copy{{$i->id}}" value="{{ route('pertanyaan', [$i->id]) }}">
+                          <button onclick="copyToClipboard('copy{{$i->id}}')">Copy text</button>
                           </td>
                           <td>
                           <a class="btn btn-primary " href="/showJawaban/{{$i->id}}">
@@ -48,4 +50,12 @@
                 </div>
               </div>
             </div>
+            <script>
+         function copyToClipboard(id) {
+        document.getElementById(id).select();
+        document.execCommand('copy');
+    }
+            </script>
+
             @endsection
+         

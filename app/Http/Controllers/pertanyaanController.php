@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\pertanyaan;
 use App\jawaban;
 use App\form;
-
+use App\kirimForm;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\Field;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
@@ -259,8 +259,31 @@ class pertanyaanController extends Controller
             $add->save(['upsert' => true]);
             
         }
-        
+
+        return redirect()->back();
         
     }
+    public function prosesLink(Request $request)
+    {
+       $chk=kirimForm::all()->first();
+       if($chk == null){
+           $isi=new kirimForm();
+           $isi->link=$request->input('link');
+           $isi->save();
+       }
+       else{
+           $upt=kirimForm::all()->first();
+           $upt->link=$request->input('link');
+           $upt->save();
+       }
+       return redirect()->back();
+        
+    }
+
+    public function formLink()
+    {
+        return view('formLink');
+    }
+
 
 }
