@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function welcome()
     {
         $kabar= kabarJurusan::where('status','setuju')->orderBy('id', 'DESC')->take(3)->get();
-        $testimonis = testimoni::with('biodata')->get();
+        $testimonis = testimoni::with('biodata')->where('status', 'setuju')->get();
        
         return view('welcome',compact('kabar','testimonis'));
     }

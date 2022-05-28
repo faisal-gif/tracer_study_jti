@@ -22,6 +22,7 @@
 	
 	<link rel="stylesheet" href="{{asset('hom/css/flaticon.css')}}">
 	<link rel="stylesheet" href="{{asset('hom/css/style.css')}}">
+	
 </head>
 <body>
 

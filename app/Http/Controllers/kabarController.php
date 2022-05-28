@@ -26,23 +26,23 @@ class kabarController extends Controller
           'tag' => $request->input('tag'),
           'kabar' => $request->input('isi'),
           'img' => (string) $path
-          
-    
-      ]);
-        $add->save();
+        ]);$add->save();
       
         return redirect('/formKabar');
     }
+
     public function showKabar($id)
     {
         $kabar= kabarJurusan::where('_id', $id)->get();
         return view('showKabar', ['kabar'=>$kabar]);
     }
+
     public function editKabar($id)
     {
         $kabar= kabarJurusan::where('_id', $id)->get();
         return view('editKabar', ['kabar'=>$kabar]);
     }
+
     public function prosesEdit(Request $request,$id)
     {
         $kabar= kabarJurusan::where('_id', $id)->first();
@@ -61,37 +61,34 @@ class kabarController extends Controller
             $kabar->img=$x;
             $kabar->save();
         }
-        
-
         return redirect()->back();
     }
-    public function filterKab()
-    {
+
+    public function filterKab(){
         $kabar= kabarJurusan::all();
         return view('showKab', ['kabar'=>$kabar]);
     }
-    public function deleteKabar($id)
-    {
-        $kabar= kabarJurusan::where('_id', $id)->first();
-    
-        $kabar->status;
+
+    public function deleteKabar($id){
+        $kabar= kabarJurusan::where('_id', $id);
+        $kabar->delete();
         return redirect('/filterKab');
     }
-    public function statusKabar(Request $request,$id)
-    {
+
+    public function statusKabar(Request $request,$id){
         $kabar= kabarJurusan::where('_id', $id)->first();
         $kabar->status=$request->input('status');
         $kabar->note=$request->input('note');
         $kabar->save();
         return redirect('/filterKab');
     }
-    public function kabarKu($idUser)
-    {
+
+    public function kabarKu($idUser){
         $kabar= kabarJurusan::where('idUser', $idUser)->get();
         return view('kabarKu', compact('kabar'));
     }
-    public function kabarr()
-    {
+
+    public function kabarr(){
         $kabar= kabarJurusan::where('status', 'setuju')->get();
         return view('kabarr', compact('kabar'));
     }

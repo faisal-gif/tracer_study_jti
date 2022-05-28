@@ -23,15 +23,14 @@
   <link rel="stylesheet" href="{{asset('ad/css/vertical-layout-light/style.css')}}">
 
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{asset('ad/images/favicon.png')}}" />
+  <link rel="shortcut icon" href="{{asset('images/logo_jti.png')}}" />
 </head>
 <body>
 <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo_jti.png" class="mr-2" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -82,7 +81,7 @@
         @if(Gate::check('admin'))
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="icon-columns menu-icon"></i>
+              <i class="icon-head menu-icon"></i>
               <span class="menu-title">Biodata Alumni</span>
               <i class="menu-arrow"></i>
             </a>
@@ -99,7 +98,7 @@
           @if(Gate::check('alumni') || Gate::check('admin') )
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-kabar" aria-expanded="false" aria-controls="form-elements">
-              <i class="icon-columns menu-icon"></i>
+              <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Kabar Berita</span>
               <i class="menu-arrow"></i>
             </a>
@@ -121,19 +120,21 @@
           </li>
           @if(Gate::check('alumni') || Gate::check('admin') )
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements2" aria-expanded="false" aria-controls="form-elements">
-              <i class="icon-columns menu-icon"></i>
+
+            <a class="nav-link" data-toggle="collapse" href="#form-testimoni" aria-expanded="false" aria-controls="form-elements">
+              <i class="icon-bar-graph menu-icon"></i>
               <span class="menu-title">Testimoni Alumni</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="form-elements2">
+
+            <div class="collapse" id="form-testimoni">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/formAlumni">Form Testimoni</a></li>
               </ul>
             </div>
              @endif
              @if(Gate::check('admin'))
-            <div class="collapse" id="form-elements2">
+            <div class="collapse" id="form-testimoni">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/listTestii">List Testimoni</a></li>
               </ul>
