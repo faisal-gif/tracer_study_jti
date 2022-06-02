@@ -18,13 +18,13 @@ class kabarController extends Controller
     
         $filename = time().'.'.$file->getClientOriginalExtension();
         $path = $file->move('imgKab', $filename);
-      
+        $place='imgKab/'.$filename;
         $add=new kabarJurusan([
           'idUser' =>$request->input('idUser'),
           'judul' => $request->input('judul'),
           'tag' => $request->input('tag'),
           'kabar' => $request->input('isi'),
-          'img' => (string) $path
+          'img' => $place
         ]);$add->save();
       
         return redirect('/formKabar');

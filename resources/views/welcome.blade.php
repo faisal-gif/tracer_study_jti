@@ -37,7 +37,6 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="/about" class="nav-link">Tentang Kami</a></li>
-          <!-- <li class="nav-item"><a href="course.html" class="nav-link">Alumni</a></li> -->
           <li class="nav-item"><a href="/testimoni" class="nav-link">Alumni</a></li>
           <li class="nav-item"><a href="/kabarr" class="nav-link">Artikel</a></li>
           <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
@@ -268,7 +267,8 @@
               <div class="testimony-wrap py-4">
               
                 <div class="text">
-                <p>{{ Str::limit($testimonis->testimoni, 50) }}</p>
+                <!-- <p>{{ Str::limit($testimonis->testimoni, 50) }}</p> -->
+                <p>{{$testimonis->testimoni}}</p>
                   <div class="d-flex align-items-center">
                     <div class="user-img" style="background-image: url({{$testimonis->biodata->foto}})"></div>
                     <div class="pl-3">

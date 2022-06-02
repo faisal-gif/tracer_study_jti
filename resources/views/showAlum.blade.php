@@ -35,7 +35,7 @@
                           {{$a->tahunLulus}}
                           </td>
                           <td>
-                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal{{$a->nim}}">
+                          <button type="button" class="nav-link btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal{{$a->nim}}">
                           Detail
                         </button>
                         
@@ -77,63 +77,59 @@
       <table>
         <thead>
         <th>Data Diri</th>
-        <th>Domisili</th>
       </thead>
-      <tbody>
-      <tr >
+      <tr>          
+        <td>
+            No Handphone : {{$b->noHp}}
+              <br>
+            Kota Lahir : {{$b->kotaLahir}}            
+              <br>
+            Tangal Lahir : {{$b->tanggalLahir}}            
+              <br>
+            Jenis Kelamin : {{$b->jk}}            
+              <br>
+            Email : {{$b->email}}            
+        </td>
+              <br>
+      </table>
+
+              <br>
+
+      <table>
+        <thead>
+          <th>Domisili</th>
+      </thead>
+      <tr>
+        <td>
+          Provinsi : {{$b->provinsi}}
+            <br>
+          Kota : {{$b->kota}}
+            <br>
+          Alamat : {{$b->alamat}}
+            <br>
+          Kode Pos : {{$b->kodePos}}
+        </td>
+      </tr>
+      </table>
+
+            <br>
                         
-                        <td >
-                        <br>
-                        
-                        No Handphone : {{$b->noHp}}
-                          <br>
-                        Kota Lahir : {{$b->kotaLahir}}
-                        
-                        <br>
-                        Tangal Lahir : {{$b->tanggalLahir}}
-                        
-                        <br>
-                        Jenis Kelamin : {{$b->jk}}
-                        
-                        <br>
-                        Email : {{$b->email}}
-                        
-                      </td>
-                        <td>
-                        
-                        Provinsi : {{$b->provinsi}}
-                        <br>
-                        Kota : {{$b->kota}}
-                        <br>
-                        Alamat : {{$b->alamat}}
-                        <br>
-                        Kode Pos : {{$b->kodePos}}
-                      
-                        </td>
-                        </table>
-                        <br>
-                        <table>
+      <table>
         <thead>
         <th>Pekerjaan</th>
-       
       </thead>
-                       
-                        <tr>
-                        <td>
-                        <br>  
-                        Nama Pekerajaan : {{$b->pekerjaan}}
-                       
-                        <br>
-                        Jenis Pekerajaan : {{$b->jp}}
-                        <br>
-                        Nama Perusahaan : {{$b->namaPerusahaan}}
-                        <br>
-                        Alamat Perusahaan : {{$b->alamatPerusahaan}}
-                        </td>
-                      </tr>
-                      </tbody>
-                        
-      </table>
+      <tr>
+        <td>
+          Nama Pekerajaan : {{$b->pekerjaan}}
+            <br>
+          Jenis Pekerajaan : {{$b->jp}}
+            <br>
+          Nama Perusahaan : {{$b->namaPerusahaan}}
+            <br>
+          Alamat Perusahaan : {{$b->alamatPerusahaan}}
+        </td>
+      </tr>
+    </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
