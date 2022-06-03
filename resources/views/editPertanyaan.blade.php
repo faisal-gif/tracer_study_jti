@@ -4,38 +4,38 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Form Pertanyaan</h4>
-                  <form class="form-sample" method="POST" action="/prosesBuat" enctype="multipart/form-data">
+                  <form id="form-sample" class="form-sample" method="POST" action="/prosesEdit" enctype="multipart/form-data">
                  
                     @csrf
-                   
+                    
                     
                     @foreach($pertanyaan as $p)
-                    <div class="row">
+                    <div class="row" id="row-pertanyaan_{{$p->_id}}">
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Nama</label>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" name="nama" value="{{$p->name}}"/>
+                            <input type="hidden" name="id" value="{{$p->_id}}"/>
+                            <input type="hidden" name="idForm" value="{{$p->idForm}}"/>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Type</label>
                           <div class="col-sm-9">
-                          <select name="type" id="type" onchange="myFunction()">
+                          <select name="type" id="type_{{ $p->_id }}" onchange="myFunction('{{$p->_id}}')">
                             <option value="text">text</option>
                             <option value="textarea">textarea</option>
                             <option value="file" >file</option>
-                            <option value="select" id="coba">select</option>
-                            <option value="choice" id="coba">pilihan</option>
+                            <option value="select">select</option>
+                            <option value="choice">pilihan</option>
                             
                         </select>
                           </div>
                         </div>
-                    <div id="dynamicTable"> 
-                    @foreach($p->choices as $cs)
-                <a href="{{ $cs }}">{{ $cs }}</a>
-                    @endforeach
-                   
+                    <div id="dynamicTable" data-index> 
+                  
+              
 
 </div> 
                       </div>
@@ -48,43 +48,49 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
 <script type="text/javascript">
-    function myFunction() {
-      $("#isi").remove();
-  var x = document.getElementById("type").value;
-  if (x == "choice" ) {
-    
-    $("#dynamicTable").append('<div class="form-group row" id="isi"> <div class="col-sm-9"> <input type="text" class="form-control" name="isi[0]" placeholder="Enter your Price" class="form-control" /> </div><button type="button" name="add" id="add" class="btn btn-success">Add More</button></div>');
-    var i = 0;
+  // eksekusi / load awal
+  $(function (){
+    var pertanyaanarray = @json($pertanyaan);
+    pertanyaanarray.forEach((item, inddex) => {
+      $(`#type_${item._id}`).val(item.type).trigger('change');
+      $('#dynamicTable').html('');
+      Object.values(item.choices).forEach((item, index) => {
+        if(index == 0){
+          $("#dynamicTable").append(`<div class="form-group row" id="isi"> <div class="col-sm-9"> <input type="text" class="form-control" name="isi[]" placeholder="Enter your Price" value="${item}" /> </div><button type="button" name="add" id="add" class="btn btn-success">Add More</button></div>`);
+        }else{
+          $("#dynamicTable").append(`<div class="form-group row" id="isi">  <div class="col-sm-9"> <input type="text" class="form-control" name="isi[]" placeholder="Enter your Price" value="${item}" /></div> <button type="button" class="btn btn-danger remove-tr">Remove</button> </div> `);
+        }
+      })
+    })
+
     $("#add").click(function(){
-        ++i;
-        $("#dynamicTable").append('<div class="form-group row" id="isi">  <div class="col-sm-9"> <input type="text" class="form-control" name="isi['+i+']" placeholder="Enter your Price" class="form-control" /></div> <button type="button" class="btn btn-danger remove-tr">Remove</button> </div> ');
-
+      $("#dynamicTable").append('<div class="form-group row isi" id="isi">  <div class="col-sm-9"> <input type="text" class="form-control" name="isi[]" placeholder="Enter your Price" class="form-control" /></div> <button type="button" class="btn btn-danger remove-tr">Remove</button> </div> ');
+      removeTr();
     });
-    $(document).on('click', '.remove-tr', function(){  
-         $(this).parents('#isi').remove();
+    removeTr();
 
-    });  
-  
-}
-else if(x == "select"){
-  $("#isi").remove();
-  $("#dynamicTable").append('<div class="form-group row" id="isi"> <div class="col-sm-9"> <input type="text" class="form-control" name="isi[0]" placeholder="Enter your Price" class="form-control" /> </div><button type="button" name="add" id="add" class="btn btn-success">Add More</button></div>');
-    var i = 0;
-    $("#add").click(function(){
-        ++i;
-        $("#dynamicTable").append('<div class="form-group row" id="isi">  <div class="col-sm-9"> <input type="text" class="form-control" name="isi['+i+']" placeholder="Enter your Price" class="form-control" /></div> <button type="button" class="btn btn-danger remove-tr">Remove</button> </div> ');
+  })
 
+  function removeTr(){
+    $('.remove-tr').click(function(){
+      $(this).parents('#isi').remove();
+      // console.log($())
     });
-    $(document).on('click', '.remove-tr', function(){  
-         $(this).parents('#isi').remove();
+  }
 
-    });
-}
-else{
+  function myFunction(id = '') {
     $("#isi").remove();
-  
-}
+    var x = $(`#type_${id}`).val();
+    if(x == "select"){
+      $("#isi").remove();
+      $("#dynamicTable").append('<div class="form-group row" id="isi"> <div class="col-sm-9"> <input type="text" class="form-control" name="isi[]" placeholder="Enter your Price" class="form-control" /> </div><button type="button" name="add" id="add" class="btn btn-success">Add More</button></div>');
+    }
+    else{
+      $("#isi").remove();
+    }
 }
 </script>
 @endsection

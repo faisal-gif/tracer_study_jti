@@ -14,8 +14,9 @@ use App\Http\Controllers\TestimoniController;
 */
 
 Route::get('/', 'HomeController@welcome');
-
+Route::post('/loginCoba', 'Auth\LoginController@loginCoba')->name('loginCoba');
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 //alumni
@@ -61,6 +62,7 @@ Route::get('/pertanyaan/{idForm}', 'pertanyaanController@pertanyaan')->name('per
 Route::post('/copyPertanyaan/{idForm}', 'pertanyaanController@copyPertanyaan');
 Route::get('/deletePertanyaan/{id}', 'pertanyaanController@delPertanyaan');
 Route::get('/editPertanyaan/{id}', 'pertanyaanController@editPertanyaan');
+Route::post('/prosesEdit', 'pertanyaanController@prosesEdit');
 Route::post('/jawaban', 'pertanyaanController@prosesIsi');
 Route::get('/showJawaban/{idForm}', 'pertanyaanController@showJawaban');
 Route::get('/exportJawaban/{idForm}', 'pertanyaanController@export_excel');

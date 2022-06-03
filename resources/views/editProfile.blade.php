@@ -7,6 +7,29 @@
                   <form class="form-sample" method="POST" action="/updateAlum" enctype="multipart/form-data">
                     @csrf
                     <p class="card-description">
+                    Account
+                    </p>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> UserName</label>
+                          <div class="col-sm-9">
+                          <input type="text" class="form-control" name="username" value="{{ Auth::user()->email }}">
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> Password</label>
+                          <div class="col-sm-9">
+                          <input type="text" class="form-control" name="password" value="{{ Auth::user()->password }}">
+                          </div>
+                        </div>
+                      </div>
+                      
+                      </div>
+                    <p class="card-description">
                     Data Diri
                     </p>
                     @foreach($bio as $b)

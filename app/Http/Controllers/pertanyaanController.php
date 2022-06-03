@@ -134,6 +134,52 @@ class pertanyaanController extends Controller
         return redirect('/showPertanyaan'.'/'.$request->input('idForm'));
         
     }
+    public function prosesEdit(Request $request)
+    {
+        $add=pertanyaan::where('_id',$request->input('id'))->first();
+        $nama= str_replace(' ', '', $request->input('nama'));
+        $add->name = $nama;
+        $add->idForm=$request->input('idForm');
+        $add->type = $request->input('type');
+        $add->label = $request->input('nama');
+        
+      
+        if ($request->input('type') == "select") {
+            $object;
+            $request->validate([
+            'isi.*' => 'required',
+            
+        ]);
+
+            foreach ($request->isi as $key => $value) {
+                $object[$value]=$value;
+            }
+            $add->choices = (object) $object;
+            $add->save();
+        } elseif ($request->input('type') == "choice") {
+            $object;
+            $request->validate([
+        'isi.*' => 'required',
+        
+    ]);
+
+            foreach ($request->isi as $key => $value) {
+                $object[$value]=$value;
+            }
+            $add->choices = (object) $object;
+            $add->choice_options = [
+            'wrapper' => ['class' => 'choice-wrapper'],
+            'label_attr' => ['class' => 'label-class'],
+        ];
+            $add->expanded = true;
+            $add->save();
+        }
+
+        $add->save();
+    
+        return redirect('/showPertanyaan'.'/'.$request->input('idForm'));
+        
+    }
 
     public function prosesIsi(Request $request, FormBuilder $formBuilder)
     {

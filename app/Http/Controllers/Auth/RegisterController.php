@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\biodata;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -41,13 +42,18 @@ class RegisterController extends Controller
 
     protected function create(Request $request)
     {
-        
-        User::create([
+        $nim=$request->input('nim');
+        $chk=biodata::where('nim',$nim)->first();
+        if ($chk == null) {
+            User::create([
             'id' => $request->input('email'),
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
+            'password' => $request->input('password'),
+            'roles' => 'alumni'
         ]);
         return redirect('/login');
+        }
+        
     }
 }

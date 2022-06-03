@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\User;
+use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -19,21 +22,34 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
-
+    
+use AuthenticatesUsers;
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    public function redirectTo(){
+    public function loginCoba(Request $request){
+        $user = User::where([ 
+            'email'  => $request->email,
+            'password'  => $request->password
+        ])->first(); 
+        Auth::login($user);
         $for = [
             'admin' => 'home',
             'alumni'  => 'home',
         ];
+        
+        return $this->redirectTo();
 
-        return $this->redirectTo = route($for[auth()->user()->roles])
-        ;}
+    }
+    public function redirectTo(){
+        if(auth()->user()->roles=='admin'){
+            return redirect('/home');
+        }elseif(auth()->user()->roles=='alumni'){
+            return redirect('/home');
+        }   
+        }
     /**
      * Create a new controller instance.
      *
