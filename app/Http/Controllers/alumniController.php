@@ -13,6 +13,13 @@ use App\Imports\dataAlumniImport;
 
 class alumniController extends Controller
 {
+
+    public function index($id)
+    {
+        $alum = biodata::where('nim', $id)->get();
+        
+        return view('alumniDash',compact('alum'));
+    }
     public function __construct()
     {
         $this->middleware('auth');

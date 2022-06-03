@@ -30,7 +30,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo_jti.png" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.png" class="mr-2" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -73,7 +73,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="/home">
+            <a class="nav-link" href="/home/{{ Auth::user()->id }}">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -123,20 +123,20 @@
 
             <a class="nav-link" data-toggle="collapse" href="#form-testimoni" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-bar-graph menu-icon"></i>
-              <span class="menu-title">Testimoni Alumni</span>
+              <span class="menu-title">Kata Alumni</span>
               <i class="menu-arrow"></i>
             </a>
 
             <div class="collapse" id="form-testimoni">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="/formAlumni">Form Testimoni</a></li>
+                <li class="nav-item"><a class="nav-link" href="/formAlumni">Form Kata Alumni</a></li>
               </ul>
             </div>
              @endif
              @if(Gate::check('admin'))
             <div class="collapse" id="form-testimoni">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="/listTestii">List Testimoni</a></li>
+                <li class="nav-item"><a class="nav-link" href="/listTestii">List Kata Alumni</a></li>
               </ul>
             </div>
             @endif
@@ -165,8 +165,9 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © JTI Polinema </span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">jti@polinema.ac.id </span>
+            <!-- <i class="ti-heart text-danger ml-1"></i> -->
           </div>
         </footer>
         <!-- partial -->

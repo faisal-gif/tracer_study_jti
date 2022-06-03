@@ -37,7 +37,7 @@ use AuthenticatesUsers;
         Auth::login($user);
         $for = [
             'admin' => 'home',
-            'alumni'  => 'home',
+            'alumni'  => 'alumniDash',
         ];
         
         return $this->redirectTo();
@@ -50,6 +50,8 @@ use AuthenticatesUsers;
             return redirect('/home');
         }   
         }
+        return $this->redirectTo = route($for[auth()->user()->roles],auth()->id())
+        ;}
     /**
      * Create a new controller instance.
      *

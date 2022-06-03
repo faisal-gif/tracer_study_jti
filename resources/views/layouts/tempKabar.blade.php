@@ -32,11 +32,10 @@
 
      <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link">Tentang Kami</a></li>
-          <!-- <li class="nav-item"><a href="course.html" class="nav-link">Alumni</a></li> -->
-          <li class="nav-item"><a href="instructor.html" class="nav-link">Alumni</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Artikel</a></li>
+        <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="/about" class="nav-link">Tentang Kami</a></li>
+          <li class="nav-item"><a href="/testimoni" class="nav-link">Alumni</a></li>
+          <li class="nav-item"><a href="/kabarr" class="nav-link">Artikel</a></li>
           <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
         </ul>
       </div>

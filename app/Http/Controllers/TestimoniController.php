@@ -40,7 +40,6 @@ class TestimoniController extends Controller
 
     public function show(){
         $testimonis = testimoni::with('biodata')->get();
-        
         return view('listTesti', compact('testimonis'));
     }
     

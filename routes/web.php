@@ -19,7 +19,10 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/{id}', 'HomeController@index')->name('home');
+
 //alumni
+Route::get('/alumniDash/{id}', 'alumniController@index')->name('alumniDash');
 Route::post('/proAlumni', 'alumniController@proAlumni')->name('proAlumni');
 Route::get('/formBiodata', function () {
     return view('alumni');

@@ -1,13 +1,13 @@
 @extends('layouts.lay')
 @section('content')
-<h3 style="font-size: 30px;">List Testimoni</h3><br><br>
+<h3 style="font-size: 30px;">List Kata Alumni</h3><br><br>
 <style>
 /* #selengkapnya {display: none;} */
 </style>
 <table class="table table-bordered table-hover table-responsive">
   <tr>
     <th style="width:50%;">Nama</th>
-    <th style="width:50%;">Testimoni</th>
+    <th style="width:50%;">Kata Alumni</th>
     <th colspan="3" style="text-align:center;">Aksi</th>
   </tr>
   <!-- @foreach($testimonis as $testim) 
@@ -54,8 +54,9 @@
                           
                           </td>
                           <td>
-                          <a class="nav-link btn btn-info btn-sm" href="/show/{{$testim->id}}" >
-                            Detail
+                          <!-- <a class="nav-link btn btn-info btn-sm" href="/show/{{$testim->id}}" >
+                            Detail -->
+                            <button type="submit" class="nav-link btn btn-primary btn-sm" data-toggle="modal" data-target="#contohModal{{$testim->id}}">Detail</button>
                           </td>
                           <td>
                             @if($testim->status === 'setuju')
@@ -139,9 +140,23 @@
 </div>
 </form>
 @endforeach
-
-
 </table>
 
+@foreach($testimonis as $testim) 
+<div class="modal fade" id="contohModal{{$testim->id}}" role="dialog" arialabelledby="modalLabel" area-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    
+                    {{$testim->testimoni}}
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">Close</button> 
+                  </div>
+                </div>
+              </div>
+            </div>
+@endforeach
         
 @endsection

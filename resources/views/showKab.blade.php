@@ -35,7 +35,7 @@
                           {{$k->judul}}
                           </td>
                           <td>
-                          <a class="nav-link btn btn-info btn-sm" href="/showKabar/{{$k->id}}" >
+                          <a class="nav-link btn btn-primary btn-sm" href="/showKabar/{{$k->id}}" >
                             Detail
                           </td>
                           <td>
