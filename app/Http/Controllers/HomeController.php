@@ -42,8 +42,8 @@ class HomeController extends Controller
     {
         $kabar= kabarJurusan::where('status','setuju')->orderBy('id', 'DESC')->take(3)->get();
         $testimonis = testimoni::with('biodata')->where('status', 'setuju')->get();
-       
-        return view('welcome',compact('kabar','testimonis'));
+        $kuis=kirimForm::all()->first();
+        return view('welcome',compact('kabar','testimonis','kuis'));
     }
     public function showProfile($nim)
     {
@@ -73,7 +73,7 @@ class HomeController extends Controller
         public function whatsappNotification()
         {
             $sid    = "AC6f5a79e42795a97142536a0f1b3cfb0c";
-            $token  = "da1838ede939916a245d810ab276dc23";
+            $token  = "057296a3219f9f3a6c9b88c91de42127";
             $wa_from= "+14155238886";
             $twilio = new Client($sid, $token);
             

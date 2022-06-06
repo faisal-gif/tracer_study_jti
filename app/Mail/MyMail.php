@@ -30,7 +30,7 @@ class MyMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from websitepercobaan.com')
+        return $this->subject('Mail from Tracer Study Polinema')
                     ->view('testEmail')
                     ->with(
                         [

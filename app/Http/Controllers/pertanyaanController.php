@@ -21,58 +21,60 @@ class pertanyaanController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('pertanyaan','prosesIsi');
     }
     public function formPertanyaan($idForm)
     {
-        return view('formPertanyaan',compact('idForm'));
+        return view('formPertanyaan', compact('idForm'));
     }
     public function buatForm()
     {
-     
         return view('buatForm');
     }
     public function editPertanyaan($id)
     {
-        $pertanyaan=pertanyaan::where('_id',$id)->get();
-        return view('editPertanyaan',compact('pertanyaan'));
+        $pertanyaan=pertanyaan::where('_id', $id)->get();
+        return view('editPertanyaan', compact('pertanyaan'));
     }
     public function listPertanyaan($idForm)
     {
-        $pertanyaan=pertanyaan::where('idForm',$idForm)->get();
+        $pertanyaan=pertanyaan::where('idForm', $idForm)->get();
         $listForm=form::all();
-        return view('showPertanyaan',compact('pertanyaan','idForm','listForm'));
+        return view('showPertanyaan', compact('pertanyaan', 'idForm', 'listForm'));
     }
     public function listForm()
     {
         $form=form::all();
-        return view('showForm',compact('form'));
+        return view('showForm', compact('form'));
     }
     public function prosesForm(Request $request)
     {
-        $check=form::where('namaForm',$request->input('nama'))->first();
+        $check=form::where('namaForm', $request->input('nama'))->first();
         if ($check != null) {
             return redirect('/');
         }
         $add=new form();
         $add->namaForm = $request->input('nama');
         $add->save();
-        $form=form::where('namaForm',$request->input('nama'))->first();
+        $form=form::where('namaForm', $request->input('nama'))->first();
         $idForm=$form->id;
        
         return redirect('/showPertanyaan'.'/'.$idForm);
-        
     }
 
-    public function pertanyaan(FormBuilder $formBuilder,$idForm)
+    public function pertanyaan(FormBuilder $formBuilder, $idForm)
     {
-        $coba=pertanyaan::where('idForm',$idForm)->get()->toArray();
+        $coba=pertanyaan::where('idForm', $idForm)->get()->toArray();
         $idForm=[
             $idForm=
             ['name' => 'idForm',
             'type' => 'hidden',
             'value' => $idForm,
-        ],
+        ], $idForm=
+        ['name' => 'email',
+        'label' => 'email*',
+        'type' => 'email',
+    ],
         ];
         $sbmt=[
         $submit=
@@ -80,7 +82,7 @@ class pertanyaanController extends Controller
         'type' => 'submit',
     ],
     ];
-        $ad=array_merge($coba,$idForm, $sbmt);
+        $ad=array_merge($idForm, $coba, $sbmt);
         $form = $formBuilder->createByArray($ad, [
     'method' => 'POST',
     'url' => '/jawaban']);
@@ -132,11 +134,10 @@ class pertanyaanController extends Controller
         $add->save();
     
         return redirect('/showPertanyaan'.'/'.$request->input('idForm'));
-        
     }
     public function prosesEdit(Request $request)
     {
-        $add=pertanyaan::where('_id',$request->input('id'))->first();
+        $add=pertanyaan::where('_id', $request->input('id'))->first();
         $nama= str_replace(' ', '', $request->input('nama'));
         $add->name = $nama;
         $add->idForm=$request->input('idForm');
@@ -178,35 +179,41 @@ class pertanyaanController extends Controller
         $add->save();
     
         return redirect('/showPertanyaan'.'/'.$request->input('idForm'));
-        
     }
 
     public function prosesIsi(Request $request, FormBuilder $formBuilder)
     {
-        $pilGan=['choice','select'];
-        $isian=['text','textarea'];
+        $email=jawaban::where('email', $request->input('email'))->first();
+        if ($email == null) {
+            $pilGan=['choice','select'];
+            $isian=['text','textarea'];
         
-        $coba=pertanyaan::where('idForm',$request->input('idForm'))->whereIn('type', $pilGan)->get()->toArray();
-        $coba2=pertanyaan::where('idForm',$request->input('idForm'))->whereIn('type', $isian)->get()->toArray();
-        $coba3=pertanyaan::where('idForm',$request->input('idForm'))->where('type', 'file')->get()->toArray();
-        $pr=pertanyaan::where('idForm',$request->input('idForm'))->where('type', 'file')->get();
-        $form = $formBuilder->createByArray($coba);
-        $form2 = $formBuilder->createByArray($coba2);
-        $form3= $formBuilder->createByArray($coba3);
-        $ad = $form3->getFieldValues();
-        $path=[];
+            $coba=pertanyaan::where('idForm', $request->input('idForm'))->whereIn('type', $pilGan)->get()->toArray();
+            $coba2=pertanyaan::where('idForm', $request->input('idForm'))->whereIn('type', $isian)->get()->toArray();
+            $coba3=pertanyaan::where('idForm', $request->input('idForm'))->where('type', 'file')->get()->toArray();
+            $pr=pertanyaan::where('idForm', $request->input('idForm'))->where('type', 'file')->get();
+            $form = $formBuilder->createByArray($coba);
+            $form2 = $formBuilder->createByArray($coba2);
+            $form3= $formBuilder->createByArray($coba3);
+            $ad = $form3->getFieldValues();
+            $path=[];
             foreach ($ad as $key => $val) {
-                 $isi = time().'.'.$val->getClientOriginalExtension();
-                 $path[$key] =(string) $val->move('file',$isi);
-                
+                $isi = time().'.'.$val->getClientOriginalExtension();
+                $path[$key] =(string) $val->move('file', $isi);
             }
-        $add=new jawaban();
-        $add->idForm=$request->input('idForm');
-        $add->pilihanGanda=$form->getFieldValues();
-        $add->text=$form2->getFieldValues();
-        $add->file=$path;
-        $add->save();
-        return redirect()->back();
+            $add=new jawaban();
+            $add->email=$request->input('email');
+            $add->idForm=$request->input('idForm');
+            $add->pilihanGanda=$form->getFieldValues();
+            $add->text=$form2->getFieldValues();
+            $add->file=$path;
+            $add->save();
+            return redirect()->back()->with('success', 'Data telah tersimpan');
+        }
+        else{
+            return redirect()->back()->withErrors(['msg' => 'Email Yang anda Masukan Sudah Digunakan']);
+        }
+
     }
 
     
@@ -214,10 +221,10 @@ class pertanyaanController extends Controller
     {
         $pilGan=['choice','select'];
         $isian=['text','textarea'];
-        $pertanyaan=pertanyaan::whereIn('type', $pilGan)->where('idForm',$idForm)->get();
-        $pertanyaan2=pertanyaan::whereIn('type', $isian)->where('idForm',$idForm)->get();
-        $pertanyaan3=pertanyaan::where('type', 'file')->where('idForm',$idForm)->get();
-        $jawaban=jawaban::where('idForm',$idForm)->get();
+        $pertanyaan=pertanyaan::whereIn('type', $pilGan)->where('idForm', $idForm)->get();
+        $pertanyaan2=pertanyaan::whereIn('type', $isian)->where('idForm', $idForm)->get();
+        $pertanyaan3=pertanyaan::where('type', 'file')->where('idForm', $idForm)->get();
+        $jawaban=jawaban::where('idForm', $idForm)->get();
         $dt=[];
         
         foreach ($pertanyaan as $key => $p) {
@@ -240,7 +247,7 @@ class pertanyaanController extends Controller
   
  
         
-        return view('jawaban', compact('pertanyaan', 'pertanyaan2', 'dt', 'jawaban','idForm','pertanyaan3'));
+        return view('jawaban', compact('pertanyaan', 'pertanyaan2', 'dt', 'jawaban', 'idForm', 'pertanyaan3'));
     }
     public function delPertanyaan($id)
     {
@@ -248,19 +255,19 @@ class pertanyaanController extends Controller
         return redirect()->back();
     }
     public function export_excel($idForm)
-	{
-        $isi=jawaban::where('idForm',$idForm)->get()->toArray();
+    {
+        $isi=jawaban::where('idForm', $idForm)->get()->toArray();
         $export = new jawabanExport($isi);
         
-		return Excel::download($export, 'coba.xlsx');
-	}
+        return Excel::download($export, 'coba.xlsx');
+    }
     public function export_pdf($idForm)
     {
         $pilGan=['choice','select'];
         $isian=['text','textarea'];
-        $pertanyaan=pertanyaan::whereIn('type', $pilGan)->where('idForm',$idForm)->get();
-        $pertanyaan2=pertanyaan::whereIn('type', $isian)->where('idForm',$idForm)->get();
-        $jawaban=jawaban::where('idForm',$idForm)->get();
+        $pertanyaan=pertanyaan::whereIn('type', $pilGan)->where('idForm', $idForm)->get();
+        $pertanyaan2=pertanyaan::whereIn('type', $isian)->where('idForm', $idForm)->get();
+        $jawaban=jawaban::where('idForm', $idForm)->get();
         $dt=[];
         
         
@@ -282,54 +289,50 @@ class pertanyaanController extends Controller
             }
         }
         
-       $pdf=PDF::loadView('pdfJawaban',compact('pertanyaan', 'pertanyaan2', 'dt', 'jawaban'));
-       $pdf->setOption('enable-javascript',true);
-       $pdf->setOption('javascript-delay',1000);
-       $pdf->setOption('no-stop-slow-scripts',true);
-       $pdf->setOption('enable-smart-shrinking',true);
+        $pdf=PDF::loadView('pdfJawaban', compact('pertanyaan', 'pertanyaan2', 'dt', 'jawaban'));
+        $pdf->setOption('enable-javascript', true);
+        $pdf->setOption('javascript-delay', 1000);
+        $pdf->setOption('no-stop-slow-scripts', true);
+        $pdf->setOption('enable-smart-shrinking', true);
        
        
    
         return $pdf->stream();
     }
-    public function copyPertanyaan($idForm,Request $request)
+    public function copyPertanyaan($idForm, Request $request)
     {
-        $tasks = pertanyaan::where('idForm',$request->input('formCopy'))->get()->toArray();
+        $tasks = pertanyaan::where('idForm', $request->input('formCopy'))->get()->toArray();
         $idfrm=[
             'idForm' => $idForm,
         ];
         $tsk=[];
-        foreach($tasks as $t){
-            $tsk=array_merge($t,$idfrm);
+        foreach ($tasks as $t) {
+            $tsk=array_merge($t, $idfrm);
             $add=new pertanyaan($tsk);
             $add->save(['upsert' => true]);
-            
         }
 
         return redirect()->back();
-        
     }
     public function prosesLink(Request $request)
     {
-       $chk=kirimForm::all()->first();
-       if($chk == null){
-           $isi=new kirimForm();
-           $isi->link=$request->input('link');
-           $isi->save();
-       }
-       else{
-           $upt=kirimForm::all()->first();
-           $upt->link=$request->input('link');
-           $upt->save();
-       }
-       return redirect()->back();
-        
+        $chk=kirimForm::all()->first();
+        if ($chk == null) {
+            $isi=new kirimForm();
+            $isi->link=$request->input('link');
+            $isi->linkPerusahaan=$request->input('linkPerusahaan');
+            $isi->save();
+        } else {
+            $upt=kirimForm::all()->first();
+            $upt->link=$request->input('link');
+            $upt->linkPerusahaan=$request->input('linkPerusahaan');
+            $upt->save();
+        }
+        return redirect()->back();
     }
 
     public function formLink()
     {
         return view('formLink');
     }
-
-
 }

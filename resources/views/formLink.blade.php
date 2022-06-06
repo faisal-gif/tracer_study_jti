@@ -15,6 +15,14 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Link Perusahaan</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="linkPerusahaan"/>
+                          </div>
+                        </div>
+                      </div>
                     
                     </div>
                     <input type="submit" name="save" id="save" class="btn btn-primary" value="Save" />

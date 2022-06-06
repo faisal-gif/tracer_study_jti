@@ -44,7 +44,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">No HP</label>
                           <div class="col-sm-9">
-                            <input type="number" class="form-control" name="noHp" />
+                            <input type="number" class="form-control" name="noHp" placeholder="+62"/>
                           </div>
                         </div>
                       </div>

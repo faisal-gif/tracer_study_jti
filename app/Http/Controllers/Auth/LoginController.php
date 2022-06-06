@@ -32,7 +32,7 @@ use AuthenticatesUsers;
     public function loginCoba(Request $request){
         $user = User::where([ 
             'email'  => $request->email,
-            'password'  => $request->password
+            'password'  => md5($request->password)
         ])->first(); 
         Auth::login($user);
         $for = [
@@ -45,9 +45,9 @@ use AuthenticatesUsers;
     }
     public function redirectTo(){
         if(auth()->user()->roles=='admin'){
-            return redirect('/home');
+            return redirect('/home/'.auth()->user()->id);
         }elseif(auth()->user()->roles=='alumni'){
-            return redirect('/home');
+            return redirect('/alumniDash/'.auth()->user()->id);
         }   
         }
        

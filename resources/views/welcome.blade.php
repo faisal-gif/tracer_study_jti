@@ -117,7 +117,7 @@
                   <span class="subheading">Hai Alumni!</span>
                   <h2 class="mb-4">Ucapan Selamat Datang</h2>
                   <p>Tracer Study Jurusan Teknologi Informasi dilakukan untuk memantau dan mengetahui masa transisi dari dunia kampus menuju dunia kerja pada lulusan Jurusan Teknologi Informasi. Hasil dari tracer study ini akan menjadi data acuan yang sangat berharga bagi Politeknik Negeri Malang khusunya Jurusan Teknologi Informasi dalam rangka pengembangan dan kemajuan pendidikan. Oleh karena itu, kami mohon kesediaan para alumni Jurusan Teknologi Informasi - Politeknik Negeri Malang yang terhormat untuk bekerjasama dalam mengisi kuesioner Tracer Study ini.</p>
-                  <p><a href="#" class="btn btn-primary">Isi Kuisioner</a></p>
+                  <p><a href="{{$kuis->link}}" class="btn btn-primary">Isi Kuisioner</a></p>
                 </div>
               </div>
             </div>

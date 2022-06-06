@@ -118,7 +118,7 @@
               @endif
             </div>
           </li>
-          @if(Gate::check('alumni') || Gate::check('admin') )
+         
           <li class="nav-item">
 
             <a class="nav-link" data-toggle="collapse" href="#form-testimoni" aria-expanded="false" aria-controls="form-elements">
@@ -126,7 +126,7 @@
               <span class="menu-title">Kata Alumni</span>
               <i class="menu-arrow"></i>
             </a>
-
+            @if(Gate::check('alumni') )
             <div class="collapse" id="form-testimoni">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/formAlumni">Form Kata Alumni</a></li>
@@ -146,6 +146,12 @@
             <a class="nav-link" href="/listForm" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Form</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/formLink" aria-controls="form-elements">
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">Link Form</span>
             </a>
           </li>
           @endif

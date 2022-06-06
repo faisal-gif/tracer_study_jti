@@ -55,13 +55,14 @@ class alumniController extends Controller
       'pekerjaan' => $request->input('pekerjaan'),
       'jp' => $request->input('jp'),
       'namaPerusahaan' => $request->input('namaPerusahaan'),
-      'alamatPerusahaan' => $request->input('alamatPerusahaan')
+      'alamatPerusahaan' => $request->input('alamatPerusahaan'),
+      'status' => 'subscribe'
   ]);
         $user=new User([
     'id' => $request->input('nim'),
     'name' => $request->input('nama'),
     'email' => $request->input('nim'),
-    'password' => Hash::make($request->input('nim')),
+    'password' => md5($request->input('nim')),
     'roles' => 'alumni'
 ]);
         $user->save();

@@ -49,7 +49,7 @@ class RegisterController extends Controller
             'id' => $request->input('email'),
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
+            'password' =>  md5($request->input('password')),
             'roles' => 'alumni'
         ]);
         return redirect('/login');
