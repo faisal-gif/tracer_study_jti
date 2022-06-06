@@ -39,7 +39,7 @@ class Kernel extends ConsoleKernel
             $bio=biodata::where('status','subscribe')->get();
             $link=kirimForm::all()->first();
             $sid    = "AC6f5a79e42795a97142536a0f1b3cfb0c";
-            $token  = "057296a3219f9f3a6c9b88c91de42127";
+            $token  = "9abb0e59cc1695ae11478bee121b6822";
             $wa_from= "+14155238886";
             $twilio = new Client($sid, $token);
             $l=(string) $link->link;
@@ -55,37 +55,14 @@ class Kernel extends ConsoleKernel
                     'linkPerusahaan' => $link->linkPerusahaan,
                     'nama' => $b->nama
                 ];               
-                $wa="Mengingatkan kepada {$b->nama} untuk mengisi kuisioner tracer study pada tautan dibawah sistem. Partisipasi anda akan sangat berharga bagi berkembangnya JTI Polinema. Terima Kasih, Admin. : http://google.com/a";
-                $twilio->messages->create("whatsapp:+62895389118844",["from" => "whatsapp:$wa_from" ,"body" =>$wa]);
+                $wa="Mengingatkan kepada {$b->nama} untuk mengisi kuisioner tracer study pada tautan dibawah sistem. Partisipasi anda akan sangat berharga bagi berkembangnya JTI Polinema. Terima Kasih, Admin. : http://tugascoba.herokuapp.com/pertanyaan/629dc361b45b09bc450e2a92";
                 Mail::to($b->email)->send(new MyMail($details));
+                $twilio->messages->create("whatsapp:+62895389118844",["from" => "whatsapp:$wa_from" ,"body" =>$wa]);
+                
             }
         })->everyMinute();
         
-        $schedule->call(function  () {
-            $bio=biodata::where('status','subscribe')->get();
-            $link=kirimForm::all()->first();
-            $sid    = "AC6f5a79e42795a97142536a0f1b3cfb0c";
-            $token  = "057296a3219f9f3a6c9b88c91de42127";
-            $wa_from= "+14155238886";
-            $twilio = new Client($sid, $token);
-            $l=(string) $link->link;
-            foreach ($bio as $b ) {
-               
-                $details = [
-                    'title' => 'Kepada Yth. Alumni JTI Polinema',
-                    'body' => '
-                    Mengingatkan untuk mengisi kuisioner tracer study pada tautan dibawah sistem.
-                    Partisipasi anda akan sangat berharga bagi berkembangnya JTI Polinema.
-                    Terima Kasih, Admin.',
-                    'link' => $link->link,
-                    'linkPerusahaan' => $link->linkPerusahaan,
-                    'nama' => $b->nama
-                ];               
-                $wa="Mengingatkan kepada {$b->nama} untuk mengisi kuisioner tracer study pada tautan dibawah sistem. Partisipasi anda akan sangat berharga bagi berkembangnya JTI Polinema. Terima Kasih, Admin. : http://google.com/a";
-                $twilio->messages->create("whatsapp:+62895389118844",["from" => "whatsapp:$wa_from" ,"body" =>$wa]);
-                Mail::to($b->email)->send(new MyMail($details));
-            }
-        })->everyMinute();
+        
                 
     }
 

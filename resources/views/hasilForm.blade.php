@@ -1,13 +1,13 @@
 @extends('layouts.tempKabar')
 @section('content')
-
-
+<br>
 <section class="ftco-section ftco-no-pt ftco-no-pb">
-  <div class="container">
+<div class="container">
+<div class="col-12 grid-margin">
+  
+              <div class="card">
+                <div class="card-body">
     
-    <div class="row">
-      
-<div class="col-lg-8 ftco-animate py-md-5 mt-md-5">
 @if($errors->any())
 <div class="alert alert-danger">
   <strong>Data Tidak disimpan</strong> {{$errors->first()}}
@@ -18,12 +18,12 @@
     <strong>Data Tersimpan</strong> {!! \Session::get('success') !!}
   </div>
 @endif
-
 @csrf
 {!! form($form) !!}
-</div>
+                </div>
+    </div>
 </div>
 </div>
 </section>
+<br>
 @endsection
-        
