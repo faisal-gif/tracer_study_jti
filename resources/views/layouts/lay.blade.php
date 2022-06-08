@@ -70,7 +70,7 @@
       
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-      @if(Gate::check('admin') || Gate::check('jurusan') || Gate::check('prodi'))
+      @if(Gate::check('admin') || Gate::check('jurusan') || Gate::check('prodi') || Gate::check('superAdmin'))
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
@@ -90,7 +90,7 @@
             </a>
           </li>
           @endif
-        @if(Gate::check('admin'))
+        @if(Gate::check('admin') || Gate::check('superAdmin'))
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-head menu-icon"></i>
@@ -107,7 +107,7 @@
             </div>
           </li>
           @endif
-          @if(Gate::check('alumni') || Gate::check('admin') || Gate::check('jurusan') || Gate::check('prodi'))
+          @if(Gate::check('alumni') || Gate::check('admin') || Gate::check('jurusan') || Gate::check('prodi') || Gate::check('superAdmin'))
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-kabar" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-paper menu-icon"></i>
@@ -123,7 +123,7 @@
                 <li class="nav-item"><a class="nav-link" href="/kabarKu/{{ Auth::user()->id }}">KabarKu</a></li>
               </ul>
               @endif
-            @if(Gate::check('admin'))
+            @if(Gate::check('admin') || Gate::check('superAdmin'))
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/filterKab">Persetujuan Kabar</a></li>
               </ul>
@@ -138,14 +138,14 @@
               <span class="menu-title">Kata Alumni</span>
               <i class="menu-arrow"></i>
             </a>
-            @if(Gate::check('alumni') )
+            @if(Gate::check('alumni') || Gate::check('superAdmin'))
             <div class="collapse" id="form-testimoni">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/formAlumni">Form Kata Alumni</a></li>
               </ul>
             </div>
              @endif
-             @if(Gate::check('admin'))
+             @if(Gate::check('admin') || Gate::check('superAdmin'))
             <div class="collapse" id="form-testimoni">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/listTestii">List Kata Alumni</a></li>
@@ -153,7 +153,7 @@
             </div>
             @endif
           </li>
-          @if(Gate::check('admin') || Gate::check('jurusan') || Gate::check('prodi'))
+          @if(Gate::check('admin') || Gate::check('jurusan') || Gate::check('prodi') || Gate::check('superAdmin'))
           <li class="nav-item">
             <a class="nav-link" href="/listForm" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
@@ -167,7 +167,7 @@
             </a>
           </li>
           @endif
-          @if(Gate::check('admin'))
+          @if(Gate::check('admin') || Gate::check('superAdmin'))
           <li class="nav-item">
             <a class="nav-link" href="/formLink" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
@@ -175,6 +175,15 @@
             </a>
           </li>
           @endif
+          @if(Gate::check('superAdmin'))
+          <li class="nav-item">
+            <a class="nav-link" href="/showUser" aria-controls="form-elements">
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">showUser</span>
+            </a>
+          </li>
+          @endif
+
         </ul>
       </nav>
       <!-- partial -->
