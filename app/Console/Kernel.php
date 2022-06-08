@@ -52,7 +52,6 @@ class Kernel extends ConsoleKernel
                     Partisipasi anda akan sangat berharga bagi berkembangnya JTI Polinema.
                     Terima Kasih, Admin.',
                     'link' => $link->link,
-                    'linkPerusahaan' => $link->linkPerusahaan,
                     'nama' => $b->nama
                 ];               
                 $wa="Mengingatkan kepada {$b->nama} untuk mengisi kuisioner tracer study pada tautan dibawah sistem. Partisipasi anda akan sangat berharga bagi berkembangnya JTI Polinema. Terima Kasih, Admin. : http://tugascoba.herokuapp.com/pertanyaan/629dc361b45b09bc450e2a92";

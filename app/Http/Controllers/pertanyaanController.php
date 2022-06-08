@@ -324,12 +324,11 @@ class pertanyaanController extends Controller
         if ($chk == null) {
             $isi=new kirimForm();
             $isi->link=$request->input('link');
-            $isi->linkPerusahaan=$request->input('linkPerusahaan');
+           
             $isi->save();
         } else {
             $upt=kirimForm::all()->first();
             $upt->link=$request->input('link');
-            $upt->linkPerusahaan=$request->input('linkPerusahaan');
             $upt->save();
         }
         return redirect()->back();
