@@ -37,7 +37,11 @@
 						Sign In
 					</span>
 				</div>
-
+				@if($errors->any())
+<div class="alert alert-danger">
+  <strong>Error</strong> {{$errors->first()}}
+</div>
+@endif
 				<form class="login100-form validate-form" method="POSt" action="{{ route('loginCoba') }}">
                 @csrf
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">

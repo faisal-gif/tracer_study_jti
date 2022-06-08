@@ -69,7 +69,7 @@ class alumniController extends Controller
 
         $add->save();
   
-        return redirect('/formBiodata');
+        return redirect()->back()->with('success', 'Data telah tersimpan');
     }
 
     public function delAl($nim)
@@ -123,7 +123,7 @@ class alumniController extends Controller
 
         $bio->save();
         
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data telah tersimpan');
     }
     
     public function alumni(Request $request)
@@ -137,7 +137,7 @@ class alumniController extends Controller
       ]);
       $add->save();
       
-      return redirect('/formDataAlumni');
+      return redirect()->back()->with('success', 'Data telah tersimpan');
     }
     public function showData()
     {

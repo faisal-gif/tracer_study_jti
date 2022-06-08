@@ -3,6 +3,11 @@
 <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
+                @if (\Session::has('success'))
+<div class="alert alert-success">
+    <strong>Data Tersimpan</strong> {!! \Session::get('success') !!}
+  </div>
+@endif
                   <h4 class="card-title">Biodata Alumni</h4>
                   <form class="form-sample" method="POST" action="/updateAlum" enctype="multipart/form-data">
                     @csrf
@@ -10,7 +15,7 @@
                     Data Diri
                     </p>
                     @foreach($bio as $b)
-                    nncbbbb
+                    
                     <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">

@@ -3,6 +3,11 @@
 <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
+                @if (\Session::has('success'))
+<div class="alert alert-success">
+    <strong>Data Tersimpan</strong> {!! \Session::get('success') !!}
+  </div>
+@endif
                   <h4 class="card-title">Kabar Jurusan</h4>
                  
                   @foreach($kabar as $kab)

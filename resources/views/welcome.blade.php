@@ -67,11 +67,18 @@
         <div class="col-md-7"></div>
         <div class="col-md-5 order-md-last">
           <div class="login-wrap p-4 p-md-5">
+          @if($errors->any())
+<div class="alert alert-danger">
+  <strong>Error</strong> {{$errors->first()}}
+</div>
+@endif
             <h3 class="mb-4">Register Now</h3>
-            <form action="/registerUser" class="signup-form">
+            <form action="/buatUser" class="signup-form" method="POST">
+            @csrf
               <div class="form-group">
                 <label class="label" for="name">NIM</label>
-                <input type="text" name="nim" class="form-control" placeholder="NIM">
+                <input type="text" name="nim" class="form-control input100" placeholder="NIM">
+                <span class="focus-input100"></span>
               </div>
               <div class="form-group">
                 <label class="label" for="email">Username</label>

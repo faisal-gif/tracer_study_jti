@@ -42,18 +42,31 @@ class RegisterController extends Controller
 
     protected function create(Request $request)
     {
+            User::create([
+            'id' => $request->input('userName'),
+            'name' => $request->input('name'),
+            'email' => $request->input('userName'),
+            'password' =>  md5($request->input('password')),
+            'roles' => $request->input('roles')
+        ]);
+        return redirect()->back();
+        
+        
+    }
+    protected function buatUser(Request $request)
+    {
         $nim=$request->input('nim');
         $chk=biodata::where('nim',$nim)->first();
         if ($chk == null) {
             User::create([
-            'id' => $request->input('email'),
-            'name' => $request->input('name'),
+            'id' => $request->input('nim'),
+            'name' => $request->input('nim'),
             'email' => $request->input('email'),
             'password' =>  md5($request->input('password')),
             'roles' => 'alumni'
         ]);
         return redirect('/login');
         }
-        
+        return redirect()->back()->withErrors(['msg' => 'NIM anda sudah terdaftar']);
     }
 }

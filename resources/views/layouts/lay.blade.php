@@ -70,6 +70,7 @@
       
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
+      @if(Gate::check('admin') || Gate::check('jurusan') || Gate::check('prodi'))
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
@@ -78,6 +79,17 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+          @endif
+          @if(Gate::check('alumni'))
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/alumniDash/{{ Auth::user()->id }}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          @endif
         @if(Gate::check('admin'))
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
@@ -95,7 +107,7 @@
             </div>
           </li>
           @endif
-          @if(Gate::check('alumni') || Gate::check('admin') )
+          @if(Gate::check('alumni') || Gate::check('admin') || Gate::check('jurusan') || Gate::check('prodi'))
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-kabar" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-paper menu-icon"></i>
@@ -141,13 +153,21 @@
             </div>
             @endif
           </li>
-          @if(Gate::check('admin'))
+          @if(Gate::check('admin') || Gate::check('jurusan') || Gate::check('prodi'))
           <li class="nav-item">
             <a class="nav-link" href="/listForm" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Form</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/showPengisi" aria-controls="form-elements">
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">List Penjawab</span>
+            </a>
+          </li>
+          @endif
+          @if(Gate::check('admin'))
           <li class="nav-item">
             <a class="nav-link" href="/formLink" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>

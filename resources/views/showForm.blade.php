@@ -39,7 +39,7 @@
                          
                           
                           <td>
-                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#copyModal">
+                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#copyModal{{$i->id}}">
                           <i class="ti-notepad"></i>
                         </button>
                           
@@ -56,9 +56,9 @@
                 </div>
               </div>
             </div>
-            
+            @foreach($form as $i)
               <!-- Modal -->
-              <div class="modal fade bd-example-modal-lg" id="copyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade bd-example-modal-lg" id="copyModal{{$i->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -91,7 +91,7 @@
     </div>
   </div>
 </div>
-
+@endforeach
             @endsection
          @section('script')
          <script>

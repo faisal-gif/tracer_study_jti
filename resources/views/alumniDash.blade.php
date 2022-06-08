@@ -20,6 +20,7 @@
           <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card position-relative">
+                 
                 <div class="card-body">
                   <div id="detailedReports">
                     <div class="carousel-inner">
@@ -32,9 +33,7 @@
                             <!-- <a href="/showBiodata" class="btn btn-danger mb-2">close</a> -->
                               <!-- <h1 class="text-primary">400</h1>
                               <h3 class="font-weight-500 mb-xl-4 text-primary">Total Alumni JTI</h3> -->
-
                               <img id="blah" src="{{asset($b->foto)}}" alt="your image"  width="250" />
-
 <table>
   <thead>
   <th>Data Diri</th>
@@ -53,22 +52,24 @@
   </td>
         <br>
 </table>
-
                             @endforeach
-                            </div>  
+                            
                             </div>
-                          <div class="col-md-12 col-xl-9">
-                            <div class="row">
-                              <div class="col-md-12 border-right">
-                              </div>
+                          
                             </div>
-                          </div>
+                         
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="card-footer text-right">
+                <a class="btn btn-success btn-sm" href="#">
+                          Unsubscribe
+                          </a>
+              </div>  
               </div>
+             
             </div>
           </div>
 

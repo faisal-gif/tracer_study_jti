@@ -7,6 +7,7 @@ use App\pertanyaan;
 use App\jawaban;
 use App\form;
 use App\kirimForm;
+use App\listIsi;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\Field;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
@@ -183,8 +184,10 @@ class pertanyaanController extends Controller
 
     public function prosesIsi(Request $request, FormBuilder $formBuilder)
     {
+
         $email=jawaban::where('email', $request->input('email'))->first();
         if ($email == null) {
+            
             $pilGan=['choice','select'];
             $isian=['text','textarea'];
         
@@ -207,6 +210,7 @@ class pertanyaanController extends Controller
             $add->pilihanGanda=$form->getFieldValues();
             $add->text=$form2->getFieldValues();
             $add->file=$path;
+
             $add->save();
             return redirect()->back()->with('success', 'Data telah tersimpan');
         }
@@ -334,5 +338,10 @@ class pertanyaanController extends Controller
     public function formLink()
     {
         return view('formLink');
+    }
+    public function listPengisi()
+    {
+        $jawaban= jawaban::all();
+        return view('showPengisi',compact('jawaban'));
     }
 }

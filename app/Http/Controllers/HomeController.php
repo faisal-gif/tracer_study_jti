@@ -7,10 +7,12 @@ use App\kabarJurusan;
 use App\biodata;
 use App\testimoni;
 use App\kirimForm;
+use App\User;
 use App\Mail\MyMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Twilio\Rest\Client;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
@@ -24,7 +26,7 @@ class HomeController extends Controller
     public function __construct()
     {
        $this->middleware(function($request, $next){
-            if(Gate::allows('admin')||Gate::allows('alumni')) return $next($request);
+            if(Gate::allows('admin')||Gate::allows('alumni')||Gate::allows('jurusan')||Gate::allows('prodi')) return $next($request);
             abort(403, 'Anda tidak memiliki cukup hak akses');
         })->except('welcome','showProfile');
     }
@@ -50,6 +52,11 @@ class HomeController extends Controller
         $bio=  biodata::where('nim', $nim)->get();
         return view('showProfile', ['bio'=>$bio]);
     }
+    public function user(){
+        $user=User::all(); 
+        return view('showUser', compact('user'));
+        }
+        
     public function email(){
         $bio=  biodata::all();
         $link=kirimForm::all()->first();

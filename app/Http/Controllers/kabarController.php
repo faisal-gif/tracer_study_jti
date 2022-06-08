@@ -29,7 +29,7 @@ class kabarController extends Controller
           'img' => $place
         ]);$add->save();
       
-        return redirect('/formKabar');
+        return redirect()->back()->with('success', 'Data telah tersimpan');
     }
 
     public function showKabar($id)
@@ -62,7 +62,7 @@ class kabarController extends Controller
             $kabar->img=$x;
             $kabar->save();
         }
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data telah teredit');
     }
 
     public function filterKab(){

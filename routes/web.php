@@ -68,6 +68,7 @@ Route::get('/editPertanyaan/{id}', 'pertanyaanController@editPertanyaan');
 Route::post('/prosesEdit', 'pertanyaanController@prosesEdit');
 Route::post('/jawaban', 'pertanyaanController@prosesIsi');
 Route::get('/showJawaban/{idForm}', 'pertanyaanController@showJawaban');
+Route::get('/showPengisi', 'pertanyaanController@listPengisi');
 Route::get('/exportJawaban/{idForm}', 'pertanyaanController@export_excel');
 Route::get('/jawabanPdf/{idForm}', 'pertanyaanController@export_pdf');
 
@@ -92,7 +93,9 @@ Route::get('/pesan','TestimoniController@sukses');
 Route::get('/registerU', function () {
     return view('auth.register');
 });
-Route::post('/registerUser','Auth\RegisterController@create');
+Route::post('/registerUser','userController@create');
+Route::post('/buatUser','Auth\RegisterController@buatUser');
+Route::get('/showUser','HomeController@user');
 
 //email
 Route::get('/formLink','pertanyaanController@formLink');
