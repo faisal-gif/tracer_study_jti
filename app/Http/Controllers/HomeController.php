@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\kabarJurusan;
 use App\biodata;
+use App\jawaban;
 use App\testimoni;
 use App\kirimForm;
 use App\User;
@@ -38,7 +39,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $b=biodata::all()->count();
+        $j=jawaban::all()->count();
+        return view('home',compact('b','j'));
     }
     public function welcome()
     {
