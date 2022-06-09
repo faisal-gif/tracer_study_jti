@@ -43,7 +43,7 @@ return [
     
     'image' => [
         'enabled' => true,
-        'binary' => '"..\Program Files\wkhtmltopdf\bin\wkhtmltoimage"',
+        'binary' => '"..\wkhtmltopdf\bin\wkhtmltoimage"',
         'timeout' => false,
         'options' => [],
         'env'     => [],
