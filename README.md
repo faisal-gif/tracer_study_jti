@@ -6,6 +6,7 @@ Proyek ini dibangun dengan menggunakan Laravel, Boostrap, dan MongoDB untuk mana
 ## Teknologi Yang Digunakan 
 
 Framework : Laravel, Boostrap
+
 Database : MongoDB
 
 ## Prasyarat
