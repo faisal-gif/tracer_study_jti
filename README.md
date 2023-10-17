@@ -9,6 +9,28 @@ Framework : Laravel, Boostrap
 
 Database : MongoDB
 
+## Screenshoot
+
+![Halaman Landing](img/ss-landing.png)
+
+![Halaman Alumni](img/ss-alumni.png)
+
+![Halaman Kabar Jurusan](img/ss-kabar-jurusan.png)
+
+![Halaman List Form](img/ss-list-form.png)
+
+![Halaman Tambah Form](img/ss-form.png)
+
+![Halaman List Pertanyaan](img/ss-list-pertanyaan.png)
+
+![Halaman Tambah Pertanyaan](img/ss-pertanyaan.png)
+
+![Halaman Hasil Form](img/ss-hasil-form.png)
+
+
+
+
+
 ## Prasyarat
 
 Pastikan Anda telah menginstal [Laravel](https://laravel.com/) dan [Composer](https://getcomposer.org/) di sistem Anda sebelum menjalankan proyek ini.
