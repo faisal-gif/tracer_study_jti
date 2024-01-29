@@ -11,7 +11,7 @@ Database : MongoDB
 
 ## Screenshoot
 
-![Halaman Landing](img/ss-landing.png)
+![Halaman Landing](img/ss-tracer.jpg)
 
 ![Halaman Alumni](img/ss-alumni.png)
 

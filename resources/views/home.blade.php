@@ -22,7 +22,7 @@
                     </div>
                   </div>
               </div>     
-            <div class="col-md-6 grid-margin transparent">
+            <div class="col-md-6 transparent">
                 <div class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-tale">
                     <div class="card-body">
