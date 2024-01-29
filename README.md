@@ -72,13 +72,8 @@ Pastikan Anda telah menginstal [Laravel](https://laravel.com/) dan [Composer](ht
    ```bash
    php artisan key:generate
    ```
-7. Migrasi dan isi database dengan perintah berikut:
 
-   ```bash
-   php artisan migrate --seed
-   ```
-
-8. Jalankan server pengembangan Laravel
+7. Jalankan server pengembangan Laravel
 
    ```bash
    php artisan serve
